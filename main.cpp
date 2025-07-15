@@ -10,6 +10,8 @@
 #include "graph/Graph.h"
 #include "sorting/SortingAlgorithms.h"
 
+void showStackMenu(); // Forward declaration
+
 void showMainMenu() {
     std::cout << "========================================\n";
     std::cout << "    DATA STRUCTURES & ALGORITHMS\n";
@@ -24,6 +26,115 @@ void showMainMenu() {
     std::cout << "Enter your choice: ";
 }
 
+void handleStaticStack() {
+    StaticStack stack;
+    int choice, value;
+
+    do {
+        std::cout << "\n--- Static Stack Menu ---\n";
+        std::cout << "1. Push\n";
+        std::cout << "2. Pop\n";
+        std::cout << "3. Peek\n";
+        std::cout << "4. Display\n";
+        std::cout << "5. Back to Stack Menu\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                std::cout << "Enter value to push: ";
+                std::cin >> value;
+                stack.push(value);
+                break;
+            case 2:
+                value = stack.pop();
+                if (value != -1) {
+                    std::cout << "Popped value: " << value << std::endl;
+                }
+                break;
+            case 3:
+                value = stack.peek();
+                if (value != -1) {
+                    std::cout << "Top value: " << value << std::endl;
+                }
+                break;
+            case 4:
+                stack.display();
+                break;
+            case 5:
+                return;
+            default:
+                std::cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 5);
+}
+
+void handleDynamicStack() {
+    DynamicStack stack;
+    int choice, value;
+
+    do {
+        std::cout << "\n--- Dynamic Stack Menu ---\n";
+        std::cout << "1. Push\n";
+        std::cout << "2. Pop\n";
+        std::cout << "3. Peek\n";
+        std::cout << "4. Display\n";
+        std::cout << "5. Back to Stack Menu\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                std::cout << "Enter value to push: ";
+                std::cin >> value;
+                stack.push(value);
+                break;
+            case 2:
+                value = stack.pop();
+                if (value != -1) {
+                    std::cout << "Popped value: " << value << std::endl;
+                }
+                break;
+            case 3:
+                value = stack.peek();
+                if (value != -1) {
+                    std::cout << "Top value: " << value << std::endl;
+                }
+                break;
+            case 4:
+                stack.display();
+                break;
+            case 5:
+                return;
+            default:
+                std::cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 5);
+}
+
+void showStackMenu() {
+    int choice;
+    std::cout << "\n--- Stack Operations ---\n";
+    std::cout << "1. Use Static Stack\n";
+    std::cout << "2. Use Dynamic Stack\n";
+    std::cout << "3. Back to Main Menu\n";
+    std::cout << "Enter your choice: ";
+    std::cin >> choice;
+
+    switch (choice) {
+        case 1:
+            handleStaticStack();
+            break;
+        case 2:
+            handleDynamicStack();
+            break;
+        case 3:
+            return;
+        default:
+            std::cout << "Invalid choice. Returning to Main Menu.\n";
+    }
+}
+
 int main() {
     int choice;
 
@@ -33,8 +144,7 @@ int main() {
 
         switch (choice) {
             case 1:
-                // To-Do: Implement Stack sub-menu
-                std::cout << "Stack operations to be implemented.\n";
+                showStackMenu();
                 break;
             case 2:
                 // To-Do: Implement Queue sub-menu

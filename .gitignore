@@ -1,0 +1,8 @@
+# Compiled executable
+DsaFinalProject
+
+# Test executables
+test_*
+
+# VS Code configuration
+.vscode/

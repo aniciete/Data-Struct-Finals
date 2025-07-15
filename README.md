@@ -2,19 +2,25 @@
 
 This document outlines the standard workflow for contributing to the Data Structures and Algorithms final project. Following this process will ensure smooth integration and minimize conflicts.
 
-### **1. Project Structure**
+### **1. Project Status**
 
-All source code is located in the `src/` directory, organized by module:
+*   [x] Stack (Static & Dynamic)
+*   [ ] Queue
+*   [ ] Tree
+*   [ ] Graph
+*   [ ] Sorting
 
-*   `src/stack/`
-*   `src/queue/`
-*   `src/tree/`
-*   `src/graph/`
-*   `src/sorting/`
+### **2. How to Run the Project**
 
-Your personal test files (e.g., `stack_test_main.cpp`) are in the root directory and **must not** be committed to Git.
+This project is configured to be built and run easily within Visual Studio Code.
 
-### **2. The Core Development Cycle**
+1.  **Open the project in VS Code.**
+2.  Go to the **Run and Debug** panel (the icon with a play button and a bug on the left-hand side).
+3.  Click the green **"Start Debugging"** play button at the top of the panel.
+
+This will automatically compile the entire project and launch the main program.
+
+### **3. The Core Development Cycle**
 
 This is the day-to-day workflow you will follow.
 
@@ -38,7 +44,7 @@ This is the most important step for preventing bugs. Use your personal test file
 
 ```bash
 # From the project root directory
-g++ src/queue/StaticQueue.cpp src/queue/DynamicQueue.cpp queue_test_main.cpp -o test_queue && ./test_queue
+g++ -std=c++11 -Isrc src/queue/StaticQueue.cpp src/queue/DynamicQueue.cpp queue_test_main.cpp -o test_queue && ./test_queue
 ```
 *(This command compiles the queue code and the queue test file, then runs the resulting `test_queue` executable if compilation succeeds.)*
 
@@ -46,12 +52,7 @@ Repeat steps 2 and 3 until your module is working perfectly in isolation.
 
 **Step 4: Check Project Integration**
 
-Before you share your code, run the main build command to ensure your changes haven't broken the overall project.
-
-```bash
-# From the project root directory
-make
-```
+Before you share your code, run the main build by using the "Run and Debug" button in VS Code as described in section 2. This ensures your changes haven't broken the overall project.
 
 **It is expected for this command to fail** until all modules are complete. If it was passing before your changes but fails now, it indicates an *integration bug* that you need to fix. If it was already failing, and now produces *new* errors, you should also investigate.
 
@@ -77,7 +78,7 @@ Once your local tests pass and the main build is not broken by your changes, com
 
 ---
 
-### **3. Development Environment Setup**
+### **4. Development Environment Setup**
 
 To ensure a consistent and effective development environment, every team member should follow these one-time setup steps for their operating system.
 
