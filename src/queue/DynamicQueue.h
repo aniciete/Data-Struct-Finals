@@ -1,0 +1,4 @@
+#ifndef DYNAMIC_QUEUE_H
+#define DYNAMIC_QUEUE_H
+
+#endif // DYNAMIC_QUEUE_H

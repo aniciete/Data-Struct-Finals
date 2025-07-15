@@ -1,0 +1,4 @@
+#ifndef STATIC_QUEUE_H
+#define STATIC_QUEUE_H
+
+#endif // STATIC_QUEUE_H

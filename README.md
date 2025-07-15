@@ -38,27 +38,12 @@ git pull origin main
 
 Navigate to your assigned module directory (e.g., `src/queue/`) and implement your features in the `.h` and `.cpp` files.
 
-**Step 3: Test Your Module Locally**
+**Step 3: Integrate and Test**
 
-This is the most important step for preventing bugs. Use your personal test file to compile **only your module** and verify it works correctly.
+1.  **Add your files to the `Makefile`:** Open the `Makefile` in the root directory and add your new `.cpp` files to the `SRCS` list.
+2.  **Run the project:** Use the "Run and Debug" button in VS Code to compile and run the entire project. This will test your changes in the context of the full application.
 
-*Example for the Queue developer:*
-
-```bash
-# From the project root directory
-g++ -std=c++11 -Isrc src/queue/StaticQueue.cpp src/queue/DynamicQueue.cpp queue_test_main.cpp -o test_queue && ./test_queue
-```
-*(This command compiles the queue code and the queue test file, then runs the resulting `test_queue` executable if compilation succeeds.)*
-
-Repeat steps 2 and 3 until your module is working perfectly in isolation.
-
-**Step 4: Check Project Integration**
-
-Before you share your code, run the main build by using the "Run and Debug" button in VS Code as described in section 2. This ensures your changes haven't broken the overall project.
-
-**It is expected for this command to fail** until all modules are complete. If it was passing before your changes but fails now, it indicates an *integration bug* that you need to fix. If it was already failing, and now produces *new* errors, you should also investigate.
-
-**Step 5: Commit and Push Your Code**
+**Step 4: Commit and Push Your Code**
 
 Once your local tests pass and the main build is not broken by your changes, commit your work.
 
