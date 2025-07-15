@@ -1,5 +1,5 @@
 #include <iostream>
-#include "queue/StaticQueue.h"
+#include "StaticQueue.h"
 
 StaticQueue::StaticQueue() {
     frontIndex = 0;
