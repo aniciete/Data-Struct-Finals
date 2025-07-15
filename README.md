@@ -5,7 +5,7 @@ This document outlines the standard workflow for contributing to the Data Struct
 ### **1. Project Status**
 
 *   [x] Stack (Static & Dynamic)
-*   [-] Queue (In Progress)
+*   [ ] Queue
 *   [ ] Tree
 *   [ ] Graph
 *   [ ] Sorting
