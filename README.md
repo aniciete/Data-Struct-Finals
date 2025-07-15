@@ -20,6 +20,8 @@ This project is configured to be built and run easily within Visual Studio Code.
 
 This will automatically compile the entire project and launch the main program.
 
+**Note on the `.vscode` directory:** We are intentionally committing the `.vscode` directory to the repository. It contains the `tasks.json` and `launch.json` files, which are essential for a consistent build and debug experience for all team members.
+
 ### **3. The Core Development Cycle**
 
 This is the day-to-day workflow you will follow.
