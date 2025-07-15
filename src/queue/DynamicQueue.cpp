@@ -1,5 +1,5 @@
 #include <iostream>
-#include "queue/DynamicQueue.h"
+#include "DynamicQueue.h"
 
 DynamicQueue::DynamicQueue() {
     frontNode = nullptr;
