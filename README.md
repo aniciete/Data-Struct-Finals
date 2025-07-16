@@ -8,7 +8,7 @@ This document outlines the standard workflow for contributing to the Data Struct
 *   [x] Queue (Static & Dynamic)
 *   [x] Tree (Binary Search Tree)
 *   [x] Graph (Adjacency List)
-*   [ ] Sorting
+*   [x] Sorting (Bubble, Merge, Quick)
 
 ### **2. How to Run the Project**
 

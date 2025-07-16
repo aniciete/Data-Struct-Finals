@@ -189,9 +189,91 @@ void showQueueMenu() {
     std::cin >> choice;
 
     if (choice == 1) {
-        // Static Queue implementation
+        int staticChoice, value;
+        do {
+            std::cout << "\n--- Static Queue Menu ---\n";
+            std::cout << "1. Enqueue\n";
+            std::cout << "2. Dequeue\n";
+            std::cout << "3. Front\n";
+            std::cout << "4. Rear\n";
+            std::cout << "5. Display\n";
+            std::cout << "6. Back to Queue Menu\n";
+            std::cout << "Enter your choice: ";
+            std::cin >> staticChoice;
+
+            switch (staticChoice) {
+                case 1:
+                    std::cout << "Enter value to enqueue: ";
+                    std::cin >> value;
+                    staticQueue.enqueue(value);
+                    break;
+                case 2:
+                    staticQueue.dequeue();
+                    break;
+                case 3:
+                    value = staticQueue.front();
+                    if (value != -1) {
+                        std::cout << "Front value: " << value << std::endl;
+                    }
+                    break;
+                case 4:
+                    value = staticQueue.rear();
+                    if (value != -1) {
+                        std::cout << "Rear value: " << value << std::endl;
+                    }
+                    break;
+                case 5:
+                    staticQueue.display();
+                    break;
+                case 6:
+                    return;
+                default:
+                    std::cout << "Invalid choice. Please try again.\n";
+            }
+        } while (staticChoice != 6);
     } else if (choice == 2) {
-        // Dynamic Queue implementation
+        int dynamicChoice, value;
+        do {
+            std::cout << "\n--- Dynamic Queue Menu ---\n";
+            std::cout << "1. Enqueue\n";
+            std::cout << "2. Dequeue\n";
+            std::cout << "3. Front\n";
+            std::cout << "4. Rear\n";
+            std::cout << "5. Display\n";
+            std::cout << "6. Back to Queue Menu\n";
+            std::cout << "Enter your choice: ";
+            std::cin >> dynamicChoice;
+
+            switch (dynamicChoice) {
+                case 1:
+                    std::cout << "Enter value to enqueue: ";
+                    std::cin >> value;
+                    dynamicQueue.enqueue(value);
+                    break;
+                case 2:
+                    dynamicQueue.dequeue();
+                    break;
+                case 3:
+                    value = dynamicQueue.front();
+                    if (value != -1) {
+                        std::cout << "Front value: " << value << std::endl;
+                    }
+                    break;
+                case 4:
+                    value = dynamicQueue.rear();
+                    if (value != -1) {
+                        std::cout << "Rear value: " << value << std::endl;
+                    }
+                    break;
+                case 5:
+                    dynamicQueue.display();
+                    break;
+                case 6:
+                    return;
+                default:
+                    std::cout << "Invalid choice. Please try again.\n";
+            }
+        } while (dynamicChoice != 6);
     }
 }
 
@@ -306,5 +388,43 @@ void showGraphMenu() {
 }
 
 void showSortingMenu() {
-    std::cout << "Sorting algorithms to be implemented.\n";
+    int choice;
+    std::vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+
+    do {
+        std::cout << "\n--- Sorting Algorithms Menu ---\n";
+        std::cout << "1. Bubble Sort\n";
+        std::cout << "2. Merge Sort\n";
+        std::cout << "3. Quick Sort\n";
+        std::cout << "4. Back to Main Menu\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+
+        std::vector<int> temp_arr = arr;
+
+        switch (choice) {
+            case 1:
+                bubbleSort(temp_arr);
+                std::cout << "Sorted array: ";
+                for (int x : temp_arr) std::cout << x << " ";
+                std::cout << std::endl;
+                break;
+            case 2:
+                mergeSort(temp_arr, 0, temp_arr.size() - 1);
+                std::cout << "Sorted array: ";
+                for (int x : temp_arr) std::cout << x << " ";
+                std::cout << std::endl;
+                break;
+            case 3:
+                quickSort(temp_arr, 0, temp_arr.size() - 1);
+                std::cout << "Sorted array: ";
+                for (int x : temp_arr) std::cout << x << " ";
+                std::cout << std::endl;
+                break;
+            case 4:
+                return;
+            default:
+                std::cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 4);
 }
