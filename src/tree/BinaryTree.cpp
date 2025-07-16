@@ -1,6 +1,5 @@
 #include "BinaryTree.h"
 #include <iostream>
-using namespace std;
 
 BinaryTree::BinaryTree() {
     root = nullptr;

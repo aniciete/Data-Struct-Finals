@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include <limits>
 #include "stack/StaticStack.h"
 #include "stack/DynamicStack.h"
 #include "queue/StaticQueue.h"
@@ -6,6 +9,7 @@
 #include "tree/BinaryTree.h"
 #include "graph/Graph.h"
 #include "sorting/SortingAlgorithms.h"
+#include "utils/InputUtils.h"
 
 void showMainMenu();
 void showStackMenu();
@@ -17,12 +21,13 @@ void showSortingMenu();
 void handleStaticStack();
 void handleDynamicStack();
 
+
 int main() {
     int choice;
 
     do {
         showMainMenu();
-        std::cin >> choice;
+        choice = getValidatedInput<int>("", 1, 6);
 
         switch (choice) {
             case 1:
@@ -101,13 +106,11 @@ void handleStaticStack() {
         std::cout << "3. Peek\n";
         std::cout << "4. Display\n";
         std::cout << "5. Back to Stack Menu\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        choice = getValidatedInput<int>("Enter your choice: ", 1, 5);
 
         switch (choice) {
             case 1:
-                std::cout << "Enter value to push: ";
-                std::cin >> value;
+                value = getValidatedInput<int>("Enter value to push: ");
                 stack.push(value);
                 break;
             case 2:
@@ -144,13 +147,11 @@ void handleDynamicStack() {
         std::cout << "3. Peek\n";
         std::cout << "4. Display\n";
         std::cout << "5. Back to Stack Menu\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        choice = getValidatedInput<int>("Enter your choice: ", 1, 5);
 
         switch (choice) {
             case 1:
-                std::cout << "Enter value to push: ";
-                std::cin >> value;
+                value = getValidatedInput<int>("Enter value to push: ");
                 stack.push(value);
                 break;
             case 2:
@@ -185,8 +186,7 @@ void showQueueMenu() {
     std::cout << "1. Use Static Queue\n";
     std::cout << "2. Use Dynamic Queue\n";
     std::cout << "3. Back to Main Menu\n";
-    std::cout << "Enter your choice: ";
-    std::cin >> choice;
+    choice = getValidatedInput<int>("Enter your choice: ", 1, 3);
 
     if (choice == 1) {
         int staticChoice, value;
@@ -198,13 +198,11 @@ void showQueueMenu() {
             std::cout << "4. Rear\n";
             std::cout << "5. Display\n";
             std::cout << "6. Back to Queue Menu\n";
-            std::cout << "Enter your choice: ";
-            std::cin >> staticChoice;
+            staticChoice = getValidatedInput<int>("Enter your choice: ", 1, 6);
 
             switch (staticChoice) {
                 case 1:
-                    std::cout << "Enter value to enqueue: ";
-                    std::cin >> value;
+                    value = getValidatedInput<int>("Enter value to enqueue: ");
                     staticQueue.enqueue(value);
                     break;
                 case 2:
@@ -241,13 +239,11 @@ void showQueueMenu() {
             std::cout << "4. Rear\n";
             std::cout << "5. Display\n";
             std::cout << "6. Back to Queue Menu\n";
-            std::cout << "Enter your choice: ";
-            std::cin >> dynamicChoice;
+            dynamicChoice = getValidatedInput<int>("Enter your choice: ", 1, 6);
 
             switch (dynamicChoice) {
                 case 1:
-                    std::cout << "Enter value to enqueue: ";
-                    std::cin >> value;
+                    value = getValidatedInput<int>("Enter value to enqueue: ");
                     dynamicQueue.enqueue(value);
                     break;
                 case 2:
@@ -290,23 +286,19 @@ void showTreeMenu() {
         std::cout << "5. Pre-order Traversal\n";
         std::cout << "6. Post-order Traversal\n";
         std::cout << "7. Back to Main Menu\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        choice = getValidatedInput<int>("Enter your choice: ", 1, 7);
 
         switch (choice) {
             case 1:
-                std::cout << "Enter value to insert: ";
-                std::cin >> value;
+                value = getValidatedInput<int>("Enter value to insert: ");
                 tree.insertNode(value);
                 break;
             case 2:
-                std::cout << "Enter value to delete: ";
-                std::cin >> value;
+                value = getValidatedInput<int>("Enter value to delete: ");
                 tree.deleteNode(value);
                 break;
             case 3:
-                std::cout << "Enter value to search: ";
-                std::cin >> value;
+                value = getValidatedInput<int>("Enter value to search: ");
                 if (tree.searchNode(value)) {
                     std::cout << "Node found in the tree.\n";
                 } else {
@@ -343,40 +335,32 @@ void showGraphMenu() {
         std::cout << "5. Display Graph\n";
         std::cout << "6. Traverse Graph (BFS)\n";
         std::cout << "7. Back to Main Menu\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        choice = getValidatedInput<int>("Enter your choice: ", 1, 7);
 
         switch (choice) {
             case 1:
-                std::cout << "Enter vertex value: ";
-                std::cin >> v1;
+                v1 = getValidatedInput<int>("Enter vertex value: ");
                 graph.addVertex(v1);
                 break;
             case 2:
-                std::cout << "Enter first vertex: ";
-                std::cin >> v1;
-                std::cout << "Enter second vertex: ";
-                std::cin >> v2;
+                v1 = getValidatedInput<int>("Enter first vertex: ");
+                v2 = getValidatedInput<int>("Enter second vertex: ");
                 graph.addEdge(v1, v2);
                 break;
             case 3:
-                std::cout << "Enter vertex to remove: ";
-                std::cin >> v1;
+                v1 = getValidatedInput<int>("Enter vertex to remove: ");
                 graph.removeVertex(v1);
                 break;
             case 4:
-                std::cout << "Enter first vertex of edge to remove: ";
-                std::cin >> v1;
-                std::cout << "Enter second vertex of edge to remove: ";
-                std::cin >> v2;
+                v1 = getValidatedInput<int>("Enter first vertex of edge to remove: ");
+                v2 = getValidatedInput<int>("Enter second vertex of edge to remove: ");
                 graph.removeEdge(v1, v2);
                 break;
             case 5:
                 graph.display();
                 break;
             case 6:
-                std::cout << "Enter starting vertex for traversal: ";
-                std::cin >> v1;
+                v1 = getValidatedInput<int>("Enter starting vertex for traversal: ");
                 graph.traverse(v1);
                 break;
             case 7:
@@ -389,7 +373,6 @@ void showGraphMenu() {
 
 void showSortingMenu() {
     int choice;
-    std::vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
 
     do {
         std::cout << "\n--- Sorting Algorithms Menu ---\n";
@@ -397,34 +380,50 @@ void showSortingMenu() {
         std::cout << "2. Merge Sort\n";
         std::cout << "3. Quick Sort\n";
         std::cout << "4. Back to Main Menu\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        choice = getValidatedInput<int>("Enter your choice: ", 1, 4);
 
-        std::vector<int> temp_arr = arr;
-
-        switch (choice) {
-            case 1:
-                bubbleSort(temp_arr);
-                std::cout << "Sorted array: ";
-                for (int x : temp_arr) std::cout << x << " ";
-                std::cout << std::endl;
-                break;
-            case 2:
-                mergeSort(temp_arr, 0, temp_arr.size() - 1);
-                std::cout << "Sorted array: ";
-                for (int x : temp_arr) std::cout << x << " ";
-                std::cout << std::endl;
-                break;
-            case 3:
-                quickSort(temp_arr, 0, temp_arr.size() - 1);
-                std::cout << "Sorted array: ";
-                for (int x : temp_arr) std::cout << x << " ";
-                std::cout << std::endl;
-                break;
-            case 4:
-                return;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
+        if (choice >= 1 && choice <= 3) {
+            // Get array choice after algorithm selection
+            int arrayChoice = getArrayChoice();
+            std::vector<int> originalArray;
+            
+            // Build array based on user choice
+            if (arrayChoice == 1) {
+                // Use default array
+                originalArray = {64, 34, 25, 12, 22, 11, 90};
+            } else {
+                // Get custom array from user
+                int size = getArraySize();
+                originalArray = getCustomArray(size);
+            }
+            
+            // Display original array
+            displayArray(originalArray, "Original array");
+            
+            // Create a copy for sorting to preserve original
+            std::vector<int> sortingArray = originalArray;
+            
+            // Execute selected sorting algorithm
+            switch (choice) {
+                case 1:
+                    bubbleSort(sortingArray);
+                    break;
+                case 2:
+                    mergeSort(sortingArray.begin(), sortingArray.end());
+                    break;
+                case 3:
+                    quickSort(sortingArray.begin(), sortingArray.end());
+                    break;
+            }
+            
+            // Display sorted array
+            displayArray(sortingArray, "Sorted array");
+            std::cout << std::endl;
+            
+        } else if (choice == 4) {
+            return;
+        } else {
+            std::cout << "Invalid choice. Please try again.\n";
         }
     } while (choice != 4);
 }

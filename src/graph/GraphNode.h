@@ -11,4 +11,4 @@ public:
     GraphNode(int val) : value(val) {}
 };
 
-#endif
+#endif // GRAPHNODE_H

@@ -26,4 +26,4 @@ public:
     void destroyTree(TreeNode* node);
 };
 
-#endif
+#endif // BINARY_TREE_H

@@ -20,4 +20,4 @@ public:
     void display() const;
 };
 
-#endif
+#endif // STATIC_QUEUE_H

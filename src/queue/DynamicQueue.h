@@ -21,4 +21,4 @@ public:
     void display() const;
 };
 
-#endif
+#endif // DYNAMIC_QUEUE_H

@@ -21,4 +21,4 @@ public:
     void traverse(int startValue);
 };
 
-#endif
+#endif // GRAPH_H

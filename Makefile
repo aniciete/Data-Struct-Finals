@@ -19,7 +19,8 @@ SRCS = main.cpp \
        src/queue/DynamicQueue.cpp \
        src/tree/BinaryTree.cpp \
        src/graph/Graph.cpp \
-       src/sorting/SortingAlgorithms.cpp
+       src/sorting/SortingAlgorithms.cpp \
+       src/utils/InputUtils.cpp
 
 # This is a rule that tells make how to create the final executable
 $(TARGET): $(SRCS)
