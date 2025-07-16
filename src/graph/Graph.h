@@ -3,20 +3,22 @@
 
 #include <iostream>
 #include <map>
-#include <vector>
 #include <queue>
+#include "graph/GraphNode.h"
 
 class Graph {
 private:
-    std::map<int, std::vector<int>> adjList;
+    std::map<int, GraphNode*> nodes;
 
 public:
-    void addVertex(int vertex);
-    void addEdge(int vertex1, int vertex2);
-    void removeVertex(int vertex);
-    void removeEdge(int vertex1, int vertex2);
+    ~Graph(); // Destructor to free memory
+
+    void addVertex(int value);
+    void addEdge(int v1, int v2);
+    void removeVertex(int value);
+    void removeEdge(int v1, int v2);
     void display();
-    void traverse(int startVertex);
+    void traverse(int startValue);
 };
 
 #endif
