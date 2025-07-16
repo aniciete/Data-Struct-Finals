@@ -5,3 +5,6 @@ DsaFinalProject
 test_*
 
 # VS Code configuration
+# Build artifacts
+*.dSYM/
+.DS_Store

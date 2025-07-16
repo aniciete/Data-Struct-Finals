@@ -7,33 +7,33 @@ BinaryTree::BinaryTree() {
 }
 
 BinaryTree::~BinaryTree() {
-    destroy(root);
+    destroyTree(root);
 }
 
-void BinaryTree::destroy(TreeNode* node) {
+void BinaryTree::destroyTree(TreeNode* node) {
     if (node != nullptr) {
-        destroy(node->left);
-        destroy(node->right);
+        destroyTree(node->left);
+        destroyTree(node->right);
         delete node;
     }
 }
 
-TreeNode* BinaryTree::insert(TreeNode* node, int value) {
+TreeNode* BinaryTree::insert(TreeNode* node, int data) {
     if (node == nullptr) {
-        return new TreeNode(value);
+        return new TreeNode(data);
     }
 
-    if (value < node->data) {
-        node->left = insert(node->left, value);
-    } else if (value > node->data) {
-        node->right = insert(node->right, value);
+    if (data < node->data) {
+        node->left = insert(node->left, data);
+    } else if (data > node->data) {
+        node->right = insert(node->right, data);
     }
 
     return node;
 }
 
-void BinaryTree::insert(int value) {
-    root = insert(root, value);
+void BinaryTree::insertNode(int data) {
+    root = insert(root, data);
 }
 
 TreeNode* BinaryTree::findMin(TreeNode* node) {
@@ -42,14 +42,14 @@ TreeNode* BinaryTree::findMin(TreeNode* node) {
     return node;
 }
 
-TreeNode* BinaryTree::deleteNode(TreeNode* node, int value) {
+TreeNode* BinaryTree::remove(TreeNode* node, int data) {
     if (node == nullptr)
         return node;
 
-    if (value < node->data) {
-        node->left = deleteNode(node->left, value);
-    } else if (value > node->data) {
-        node->right = deleteNode(node->right, value);
+    if (data < node->data) {
+        node->left = remove(node->left, data);
+    } else if (data > node->data) {
+        node->right = remove(node->right, data);
     } else {
         if (node->left == nullptr) {
             TreeNode* temp = node->right;
@@ -63,67 +63,67 @@ TreeNode* BinaryTree::deleteNode(TreeNode* node, int value) {
 
         TreeNode* temp = findMin(node->right);
         node->data = temp->data;
-        node->right = deleteNode(node->right, temp->data);
+        node->right = remove(node->right, temp->data);
     }
 
     return node;
 }
 
-void BinaryTree::deleteNode(int value) {
-    root = deleteNode(root, value);
+void BinaryTree::deleteNode(int data) {
+    root = remove(root, data);
 }
 
-bool BinaryTree::search(TreeNode* node, int value) {
+bool BinaryTree::search(TreeNode* node, int key) {
     if (node == nullptr)
         return false;
 
-    if (value == node->data)
+    if (key == node->data)
         return true;
-    else if (value < node->data)
-        return search(node->left, value);
+    else if (key < node->data)
+        return search(node->left, key);
     else
-        return search(node->right, value);
+        return search(node->right, key);
 }
 
-bool BinaryTree::search(int value) {
-    return search(root, value);
+bool BinaryTree::searchNode(int key) {
+    return search(root, key);
 }
 
-void BinaryTree::inorder(TreeNode* node) {
+void BinaryTree::inOrder(TreeNode* node) {
     if (node != nullptr) {
-        inorder(node->left);
-        cout << node->data << " ";
-        inorder(node->right);
+        inOrder(node->left);
+        std::cout << node->data << " ";
+        inOrder(node->right);
     }
 }
 
-void BinaryTree::preorder(TreeNode* node) {
+void BinaryTree::preOrder(TreeNode* node) {
     if (node != nullptr) {
-        cout << node->data << " ";
-        preorder(node->left);
-        preorder(node->right);
+        std::cout << node->data << " ";
+        preOrder(node->left);
+        preOrder(node->right);
     }
 }
 
-void BinaryTree::postorder(TreeNode* node) {
+void BinaryTree::postOrder(TreeNode* node) {
     if (node != nullptr) {
-        postorder(node->left);
-        postorder(node->right);
-        cout << node->data << " ";
+        postOrder(node->left);
+        postOrder(node->right);
+        std::cout << node->data << " ";
     }
 }
 
-void BinaryTree::inorder() {
-    inorder(root);
-    cout << endl;
+void BinaryTree::inOrderTraversal() {
+    inOrder(root);
+    std::cout << std::endl;
 }
 
-void BinaryTree::preorder() {
-    preorder(root);
-    cout << endl;
+void BinaryTree::preOrderTraversal() {
+    preOrder(root);
+    std::cout << std::endl;
 }
 
-void BinaryTree::postorder() {
-    postorder(root);
-    cout << endl;
+void BinaryTree::postOrderTraversal() {
+    postOrder(root);
+    std::cout << std::endl;
 }
