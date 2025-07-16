@@ -1,46 +1,87 @@
 #include "Graph.h"
 
-void Graph::addVertex(int vertex) {
-    if (adjList.find(vertex) == adjList.end()) {
-        adjList[vertex] = std::vector<int>();
-        std::cout << "Vertex " << vertex << " added.\n";
+Graph::~Graph() {
+    for (auto& pair : nodes) {
+        delete pair.second;
+    }
+}
+
+void Graph::addVertex(int value) {
+    if (nodes.find(value) == nodes.end()) {
+        nodes[value] = new GraphNode(value);
+        std::cout << "Vertex " << value << " added.\n";
     } else {
         std::cout << "Vertex already exists.\n";
     }
 }
 
-void Graph::addEdge(int vertex1, int vertex2) {
-    if (adjList.find(vertex1) != adjList.end() && adjList.find(vertex2) != adjList.end()) {
-        adjList[vertex1].push_back(vertex2);
-        adjList[vertex2].push_back(vertex1);
-        std::cout << "Edge added between " << vertex1 << " and " << vertex2 << ".\n";
+void Graph::addEdge(int v1, int v2) {
+    if (nodes.find(v1) != nodes.end() && nodes.find(v2) != nodes.end()) {
+        GraphNode* node1 = nodes[v1];
+        GraphNode* node2 = nodes[v2];
+
+        // Avoid duplicate edges
+        bool exists = false;
+        for (auto neighbor : node1->neighbors) {
+            if (neighbor->value == v2) {
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            node1->neighbors.push_back(node2);
+            node2->neighbors.push_back(node1);
+            std::cout << "Edge added between " << v1 << " and " << v2 << ".\n";
+        } else {
+            std::cout << "Edge already exists.\n";
+        }
     } else {
         std::cout << "One or both vertices do not exist.\n";
     }
 }
 
-void Graph::removeVertex(int vertex) {
-    if (adjList.find(vertex) != adjList.end()) {
-        // Remove all edges to this vertex
-        for (auto& pair : adjList) {
-            auto& edges = pair.second;
-            edges.erase(std::remove(edges.begin(), edges.end(), vertex), edges.end());
+void Graph::removeVertex(int value) {
+    auto it = nodes.find(value);
+    if (it != nodes.end()) {
+        GraphNode* toRemove = it->second;
+
+        // Remove this node from neighbors' lists
+        for (auto& pair : nodes) {
+            GraphNode* node = pair.second;
+            node->neighbors.erase(
+                std::remove_if(
+                    node->neighbors.begin(),
+                    node->neighbors.end(),
+                    [toRemove](GraphNode* neighbor) { return neighbor == toRemove; }
+                ),
+                node->neighbors.end()
+            );
         }
-        // Remove vertex itself
-        adjList.erase(vertex);
-        std::cout << "Vertex " << vertex << " removed.\n";
+
+        delete toRemove;
+        nodes.erase(it);
+        std::cout << "Vertex " << value << " removed.\n";
     } else {
         std::cout << "Vertex does not exist.\n";
     }
 }
 
-void Graph::removeEdge(int vertex1, int vertex2) {
-    if (adjList.find(vertex1) != adjList.end() && adjList.find(vertex2) != adjList.end()) {
-        auto& edges1 = adjList[vertex1];
-        auto& edges2 = adjList[vertex2];
-        edges1.erase(std::remove(edges1.begin(), edges1.end(), vertex2), edges1.end());
-        edges2.erase(std::remove(edges2.begin(), edges2.end(), vertex1), edges2.end());
-        std::cout << "Edge between " << vertex1 << " and " << vertex2 << " removed.\n";
+void Graph::removeEdge(int v1, int v2) {
+    if (nodes.find(v1) != nodes.end() && nodes.find(v2) != nodes.end()) {
+        GraphNode* node1 = nodes[v1];
+        GraphNode* node2 = nodes[v2];
+
+        node1->neighbors.erase(
+            std::remove(node1->neighbors.begin(), node1->neighbors.end(), node2),
+            node1->neighbors.end()
+        );
+
+        node2->neighbors.erase(
+            std::remove(node2->neighbors.begin(), node2->neighbors.end(), node1),
+            node2->neighbors.end()
+        );
+
+        std::cout << "Edge between " << v1 << " and " << v2 << " removed.\n";
     } else {
         std::cout << "One or both vertices do not exist.\n";
     }
@@ -48,37 +89,38 @@ void Graph::removeEdge(int vertex1, int vertex2) {
 
 void Graph::display() {
     std::cout << "\nGraph Adjacency List:\n";
-    for (const auto& pair : adjList) {
+    for (const auto& pair : nodes) {
         std::cout << pair.first << ": ";
-        for (int neighbor : pair.second) {
-            std::cout << neighbor << " ";
+        for (auto neighbor : pair.second->neighbors) {
+            std::cout << neighbor->value << " ";
         }
         std::cout << "\n";
     }
 }
 
-void Graph::traverse(int startVertex) {
-    if (adjList.find(startVertex) == adjList.end()) {
+void Graph::traverse(int startValue) {
+    if (nodes.find(startValue) == nodes.end()) {
         std::cout << "Start vertex does not exist.\n";
         return;
     }
 
     std::map<int, bool> visited;
-    std::queue<int> q;
+    std::queue<GraphNode*> q;
 
-    visited[startVertex] = true;
-    q.push(startVertex);
+    GraphNode* start = nodes[startValue];
+    visited[start->value] = true;
+    q.push(start);
 
-    std::cout << "BFS Traversal starting at vertex " << startVertex << ": ";
+    std::cout << "BFS Traversal starting at vertex " << startValue << ": ";
 
     while (!q.empty()) {
-        int current = q.front();
+        GraphNode* current = q.front();
         q.pop();
-        std::cout << current << " ";
+        std::cout << current->value << " ";
 
-        for (int neighbor : adjList[current]) {
-            if (!visited[neighbor]) {
-                visited[neighbor] = true;
+        for (GraphNode* neighbor : current->neighbors) {
+            if (!visited[neighbor->value]) {
+                visited[neighbor->value] = true;
                 q.push(neighbor);
             }
         }
