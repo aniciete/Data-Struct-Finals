@@ -2,6 +2,7 @@
 #define STATIC_STACK_H
 
 #include <iostream>
+#include <stdexcept>
 
 const int MAX_SIZE = 100; // Maximum size of the stack
 

@@ -1,6 +1,8 @@
 #ifndef DYNAMIC_QUEUE_H
 #define DYNAMIC_QUEUE_H
 
+#include <stdexcept>
+
 class DynamicQueue {
 private:
     struct Node {

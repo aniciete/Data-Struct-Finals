@@ -2,6 +2,7 @@
 #define DYNAMIC_STACK_H
 
 #include <iostream>
+#include <stdexcept>
 
 struct Node {
     int data;

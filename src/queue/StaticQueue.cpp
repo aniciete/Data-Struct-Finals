@@ -17,8 +17,7 @@ bool StaticQueue::isFull() const {
 
 void StaticQueue::enqueue(int value) {
     if (isFull()) {
-        std::cout << "Queue is full\n";
-        return;
+        throw std::runtime_error("Queue is full");
     }
     rearIndex = (rearIndex + 1) % MAX_SIZE;
     data[rearIndex] = value;
@@ -27,8 +26,7 @@ void StaticQueue::enqueue(int value) {
 
 void StaticQueue::dequeue() {
     if (isEmpty()) {
-        std::cout << "Queue is empty\n";
-        return;
+        throw std::runtime_error("Queue is empty");
     }
     frontIndex = (frontIndex + 1) % MAX_SIZE;
     count--;
@@ -36,16 +34,14 @@ void StaticQueue::dequeue() {
 
 int StaticQueue::front() const {
     if (isEmpty()) {
-        std::cout << "Queue is empty\n";
-        return -1;
+        throw std::runtime_error("Queue is empty");
     }
     return data[frontIndex];
 }
 
 int StaticQueue::rear() const {
     if (isEmpty()) {
-        std::cout << "Queue is empty\n";
-        return -1;
+        throw std::runtime_error("Queue is empty");
     }
     return data[rearIndex];
 }

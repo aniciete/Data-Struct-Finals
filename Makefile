@@ -13,6 +13,8 @@ TARGET = DsaFinalProject
 
 # List all your .cpp source files here
 SRCS = main.cpp \
+       src/stack/stackMenu.cpp \
+       src/queue/queueMenu.cpp \
        src/stack/StaticStack.cpp \
        src/stack/DynamicStack.cpp \
        src/queue/StaticQueue.cpp \

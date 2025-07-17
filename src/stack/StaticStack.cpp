@@ -1,4 +1,5 @@
 #include "StaticStack.h"
+#include <stdexcept>
 
 StaticStack::StaticStack() {
     top = -1;
@@ -14,24 +15,21 @@ bool StaticStack::isFull() {
 
 void StaticStack::push(int value) {
     if (isFull()) {
-        std::cout << "Stack overflow\n";
-        return;
+        throw std::runtime_error("Stack overflow");
     }
     arr[++top] = value;
 }
 
 int StaticStack::pop() {
     if (isEmpty()) {
-        std::cout << "Stack underflow\n";
-        return -1; // Return a sentinel value
+        throw std::runtime_error("Stack underflow");
     }
     return arr[top--];
 }
 
 int StaticStack::peek() {
     if (isEmpty()) {
-        std::cout << "Stack is empty\n";
-        return -1; // Return a sentinel value
+        throw std::runtime_error("Stack is empty");
     }
     return arr[top];
 }

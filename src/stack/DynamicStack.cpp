@@ -1,4 +1,5 @@
 #include "DynamicStack.h"
+#include <stdexcept>
 
 DynamicStack::DynamicStack() {
     top = nullptr;
@@ -23,8 +24,7 @@ void DynamicStack::push(int value) {
 
 int DynamicStack::pop() {
     if (isEmpty()) {
-        std::cout << "Stack underflow\n";
-        return -1; // Return a sentinel value
+        throw std::runtime_error("Stack underflow");
     }
     int value = top->data;
     Node* temp = top;
@@ -35,8 +35,7 @@ int DynamicStack::pop() {
 
 int DynamicStack::peek() {
     if (isEmpty()) {
-        std::cout << "Stack is empty\n";
-        return -1; // Return a sentinel value
+        throw std::runtime_error("Stack is empty");
     }
     return top->data;
 }

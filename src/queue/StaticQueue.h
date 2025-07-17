@@ -1,6 +1,8 @@
 #ifndef STATIC_QUEUE_H
 #define STATIC_QUEUE_H
 
+#include <stdexcept>
+
 class StaticQueue {
 private:
     static const int MAX_SIZE = 100;

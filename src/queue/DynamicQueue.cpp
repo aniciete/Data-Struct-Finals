@@ -28,8 +28,7 @@ void DynamicQueue::enqueue(int value) {
 
 void DynamicQueue::dequeue() {
     if (isEmpty()) {
-        std::cout << "Queue is empty\n";
-        return;
+        throw std::runtime_error("Queue is empty");
     }
     Node* temp = frontNode;
     frontNode = frontNode->next;
@@ -41,16 +40,14 @@ void DynamicQueue::dequeue() {
 
 int DynamicQueue::front() const {
     if (isEmpty()) {
-        std::cout << "Queue is empty\n";
-        return -1;
+        throw std::runtime_error("Queue is empty");
     }
     return frontNode->data;
 }
 
 int DynamicQueue::rear() const {
     if (isEmpty()) {
-        std::cout << "Queue is empty\n";
-        return -1;
+        throw std::runtime_error("Queue is empty");
     }
     return rearNode->data;
 }

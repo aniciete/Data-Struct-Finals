@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <chrono>
 #include "stack/StaticStack.h"
 #include "stack/DynamicStack.h"
 #include "queue/StaticQueue.h"
@@ -10,16 +11,19 @@
 #include "graph/Graph.h"
 #include "sorting/SortingAlgorithms.h"
 #include "utils/InputUtils.h"
+#include "utils/UIUtils.h"
+#include "stack/stackMenu.h"
+#include "queue/queueMenu.h"
 
 void showMainMenu();
-void showStackMenu();
-void showQueueMenu();
+
+
 void showTreeMenu();
 void showGraphMenu();
 void showSortingMenu();
 
-void handleStaticStack();
-void handleDynamicStack();
+
+
 
 
 int main() {
@@ -59,151 +63,23 @@ int main() {
 }
 
 void showMainMenu() {
-    std::cout << "========================================\n";
-    std::cout << "    DATA STRUCTURES & ALGORITHMS\n";
-    std::cout << "         DEMONSTRATION PROGRAM\n";
-    std::cout << "========================================\n\n";
-    std::cout << "1. Stack Operations\n";
-    std::cout << "2. Queue Operations\n";
-    std::cout << "3. Tree Operations\n";
-    std::cout << "4. Graph Operations\n";
-    std::cout << "5. Sorting Algorithms\n";
-    std::cout << "6. Exit Program\n\n";
-    std::cout << "Enter your choice: ";
+    UIUtils::printHeader("DATA STRUCTURES & ALGORITHMS\n         DEMONSTRATION PROGRAM");
+    UIUtils::printMenu({
+        "Stack Operations",
+        "Queue Operations",
+        "Tree Operations",
+        "Graph Operations",
+        "Sorting Algorithms",
+        "Exit Program"
+    });
 }
 
-void showStackMenu() {
-    int choice;
-    std::cout << "\n--- Stack Operations ---\n";
-    std::cout << "1. Use Static Stack\n";
-    std::cout << "2. Use Dynamic Stack\n";
-    std::cout << "3. Back to Main Menu\n";
-    std::cout << "Enter your choice: ";
-    std::cin >> choice;
 
-    switch (choice) {
-        case 1:
-            handleStaticStack();
-            break;
-        case 2:
-            handleDynamicStack();
-            break;
-        case 3:
-            return;
-        default:
-            std::cout << "Invalid choice. Returning to Main Menu.\n";
-    }
-}
 
-void handleStaticStack() {
-    StaticStack stack;
-    int choice, value;
 
-    do {
-        std::cout << "\n--- Static Stack Menu ---\n";
-        std::cout << "1. Push\n";
-        std::cout << "2. Pop\n";
-        std::cout << "3. Peek\n";
-        std::cout << "4. Display\n";
-        std::cout << "5. Back to Stack Menu\n";
-        choice = getValidatedInput<int>("Enter your choice: ", 1, 5);
 
-        switch (choice) {
-            case 1:
-                value = getValidatedInput<int>("Enter value to push: ");
-                stack.push(value);
-                break;
-            case 2:
-                value = stack.pop();
-                if (value != -1) {
-                    std::cout << "Popped value: " << value << std::endl;
-                }
-                break;
-            case 3:
-                value = stack.peek();
-                if (value != -1) {
-                    std::cout << "Top value: " << value << std::endl;
-                }
-                break;
-            case 4:
-                stack.display();
-                break;
-            case 5:
-                return;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
-        }
-    } while (choice != 5);
-}
 
-void handleDynamicStack() {
-    DynamicStack stack;
-    int choice, value;
 
-    do {
-        std::cout << "\n--- Dynamic Stack Menu ---\n";
-        std::cout << "1. Push\n";
-        std::cout << "2. Pop\n";
-        std::cout << "3. Peek\n";
-        std::cout << "4. Display\n";
-        std::cout << "5. Back to Stack Menu\n";
-        choice = getValidatedInput<int>("Enter your choice: ", 1, 5);
-
-        switch (choice) {
-            case 1:
-                value = getValidatedInput<int>("Enter value to push: ");
-                stack.push(value);
-                break;
-            case 2:
-                value = stack.pop();
-                if (value != -1) {
-                    std::cout << "Popped value: " << value << std::endl;
-                }
-                break;
-            case 3:
-                value = stack.peek();
-                if (value != -1) {
-                    std::cout << "Top value: " << value << std::endl;
-                }
-                break;
-            case 4:
-                stack.display();
-                break;
-            case 5:
-                return;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
-        }
-    } while (choice != 5);
-}
-
-void showQueueMenu() {
-    int choice;
-    StaticQueue staticQueue;
-    DynamicQueue dynamicQueue;
-
-    std::cout << "\n--- Queue Operations ---\n";
-    std::cout << "1. Use Static Queue\n";
-    std::cout << "2. Use Dynamic Queue\n";
-    std::cout << "3. Back to Main Menu\n";
-    choice = getValidatedInput<int>("Enter your choice: ", 1, 3);
-
-    if (choice == 1) {
-        int staticChoice, value;
-        do {
-            std::cout << "\n--- Static Queue Menu ---\n";
-            std::cout << "1. Enqueue\n";
-            std::cout << "2. Dequeue\n";
-            std::cout << "3. Front\n";
-            std::cout << "4. Rear\n";
-            std::cout << "5. Display\n";
-            std::cout << "6. Back to Queue Menu\n";
-            staticChoice = getValidatedInput<int>("Enter your choice: ", 1, 6);
-
-            switch (staticChoice) {
-                case 1:
-                    value = getValidatedInput<int>("Enter value to enqueue: ");
-                    staticQueue.enqueue(value);
                     break;
                 case 2:
                     staticQueue.dequeue();
@@ -232,14 +108,8 @@ void showQueueMenu() {
     } else if (choice == 2) {
         int dynamicChoice, value;
         do {
-            std::cout << "\n--- Dynamic Queue Menu ---\n";
-            std::cout << "1. Enqueue\n";
-            std::cout << "2. Dequeue\n";
-            std::cout << "3. Front\n";
-            std::cout << "4. Rear\n";
-            std::cout << "5. Display\n";
-            std::cout << "6. Back to Queue Menu\n";
-            dynamicChoice = getValidatedInput<int>("Enter your choice: ", 1, 6);
+            UIUtils::printSubMenu("Dynamic Queue Menu", {"Enqueue", "Dequeue", "Front", "Rear", "Display", "Back to Queue Menu"});
+            dynamicChoice = getValidatedInput<int>("", 1, 6);
 
             switch (dynamicChoice) {
                 case 1:
@@ -278,15 +148,8 @@ void showTreeMenu() {
     int choice, value;
 
     do {
-        std::cout << "\n--- Binary Tree Menu ---\n";
-        std::cout << "1. Insert Node\n";
-        std::cout << "2. Delete Node\n";
-        std::cout << "3. Search Node\n";
-        std::cout << "4. In-order Traversal\n";
-        std::cout << "5. Pre-order Traversal\n";
-        std::cout << "6. Post-order Traversal\n";
-        std::cout << "7. Back to Main Menu\n";
-        choice = getValidatedInput<int>("Enter your choice: ", 1, 7);
+        UIUtils::printSubMenu("Binary Tree Menu", {"Insert Node", "Delete Node", "Search Node", "In-order Traversal", "Pre-order Traversal", "Post-order Traversal", "Back to Main Menu"});
+        choice = getValidatedInput<int>("", 1, 7);
 
         switch (choice) {
             case 1:
@@ -327,15 +190,8 @@ void showGraphMenu() {
     int choice, v1, v2;
 
     do {
-        std::cout << "\n--- Graph Menu ---\n";
-        std::cout << "1. Add Vertex\n";
-        std::cout << "2. Add Edge\n";
-        std::cout << "3. Remove Vertex\n";
-        std::cout << "4. Remove Edge\n";
-        std::cout << "5. Display Graph\n";
-        std::cout << "6. Traverse Graph (BFS)\n";
-        std::cout << "7. Back to Main Menu\n";
-        choice = getValidatedInput<int>("Enter your choice: ", 1, 7);
+        UIUtils::printSubMenu("Graph Menu", {"Add Vertex", "Add Edge", "Remove Vertex", "Remove Edge", "Display Graph", "Traverse Graph (BFS)", "Back to Main Menu"});
+        choice = getValidatedInput<int>("", 1, 7);
 
         switch (choice) {
             case 1:
@@ -375,12 +231,8 @@ void showSortingMenu() {
     int choice;
 
     do {
-        std::cout << "\n--- Sorting Algorithms Menu ---\n";
-        std::cout << "1. Bubble Sort\n";
-        std::cout << "2. Merge Sort\n";
-        std::cout << "3. Quick Sort\n";
-        std::cout << "4. Back to Main Menu\n";
-        choice = getValidatedInput<int>("Enter your choice: ", 1, 4);
+        UIUtils::printSubMenu("Sorting Algorithms Menu", {"Bubble Sort", "Merge Sort", "Quick Sort", "Back to Main Menu"});
+        choice = getValidatedInput<int>("", 1, 4);
 
         if (choice >= 1 && choice <= 3) {
             // Get array choice after algorithm selection
@@ -403,7 +255,8 @@ void showSortingMenu() {
             // Create a copy for sorting to preserve original
             std::vector<int> sortingArray = originalArray;
             
-            // Execute selected sorting algorithm
+            // Execute selected sorting algorithm and measure performance
+            auto start = std::chrono::high_resolution_clock::now();
             switch (choice) {
                 case 1:
                     bubbleSort(sortingArray);
@@ -415,9 +268,12 @@ void showSortingMenu() {
                     quickSort(sortingArray.begin(), sortingArray.end());
                     break;
             }
-            
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+
             // Display sorted array
             displayArray(sortingArray, "Sorted array");
+            std::cout << "Time taken: " << duration.count() << " microseconds\n";
             std::cout << std::endl;
             
         } else if (choice == 4) {
