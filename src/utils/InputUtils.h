@@ -7,6 +7,7 @@
 
 #include <iostream>
 
+// Template function to get validated input with optional min/max range checking
 template <typename T>
 T getValidatedInput(const std::string& prompt, T min = std::numeric_limits<T>::min(), T max = std::numeric_limits<T>::max()) {
     T value;
@@ -14,6 +15,7 @@ T getValidatedInput(const std::string& prompt, T min = std::numeric_limits<T>::m
         std::cout << prompt;
         std::cin >> value;
 
+        // Handle invalid input (non-numeric)
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -23,6 +25,7 @@ T getValidatedInput(const std::string& prompt, T min = std::numeric_limits<T>::m
 
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
+        // Check if input is within valid range
         if (value < min || value > max) {
             std::cout << "Input out of range. Please enter a number between " << min << " and " << max << ".\n";
             continue;
@@ -32,6 +35,7 @@ T getValidatedInput(const std::string& prompt, T min = std::numeric_limits<T>::m
     }
 }
 
+// Utility functions for array input handling
 int getArraySize();
 std::vector<int> getCustomArray(int size);
 void displayArray(const std::vector<int>& arr, const std::string& label);

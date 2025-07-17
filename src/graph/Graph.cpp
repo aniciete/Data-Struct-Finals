@@ -1,11 +1,13 @@
 #include "Graph.h"
 
+// Destructor: Clean up all dynamically allocated nodes
 Graph::~Graph() {
     for (auto& pair : nodes) {
         delete pair.second;
     }
 }
 
+// Add a new vertex to the graph if it doesn't already exist
 void Graph::addVertex(int value) {
     if (nodes.find(value) == nodes.end()) {
         nodes[value] = new GraphNode(value);
@@ -15,6 +17,7 @@ void Graph::addVertex(int value) {
     }
 }
 
+// Add an undirected edge between two existing vertices
 void Graph::addEdge(int v1, int v2) {
     if (nodes.find(v1) != nodes.end() && nodes.find(v2) != nodes.end()) {
         GraphNode* node1 = nodes[v1];
@@ -40,12 +43,14 @@ void Graph::addEdge(int v1, int v2) {
     }
 }
 
+// Remove a vertex and all its associated edges from the graph
 void Graph::removeVertex(int value) {
     auto it = nodes.find(value);
     if (it != nodes.end()) {
         GraphNode* toRemove = it->second;
 
         // Remove this node from neighbors' lists
+        // Remove this node from every other node's neighbor list
         for (auto& pair : nodes) {
             GraphNode* node = pair.second;
             node->neighbors.erase(
@@ -58,14 +63,15 @@ void Graph::removeVertex(int value) {
             );
         }
 
-        delete toRemove;
-        nodes.erase(it);
+        delete toRemove; // Free memory
+        nodes.erase(it); // Remove from map
         std::cout << "Vertex " << value << " removed.\n";
     } else {
         std::cout << "Vertex does not exist.\n";
     }
 }
 
+// Remove the edge between two vertices if both exist
 void Graph::removeEdge(int v1, int v2) {
     if (nodes.find(v1) != nodes.end() && nodes.find(v2) != nodes.end()) {
         GraphNode* node1 = nodes[v1];
@@ -87,6 +93,7 @@ void Graph::removeEdge(int v1, int v2) {
     }
 }
 
+// Print the adjacency list representation of the graph
 void Graph::display() {
     std::cout << "\nGraph Adjacency List:\n";
     for (const auto& pair : nodes) {
@@ -98,14 +105,15 @@ void Graph::display() {
     }
 }
 
+// Perform Breadth-First Search (BFS) traversal from the given starting vertex
 void Graph::traverse(int startValue) {
     if (nodes.find(startValue) == nodes.end()) {
         std::cout << "Start vertex does not exist.\n";
         return;
     }
 
-    std::map<int, bool> visited;
-    std::queue<GraphNode*> q;
+    std::map<int, bool> visited; // Track visited vertices
+    std::queue<GraphNode*> q;    // Queue for BFS
 
     GraphNode* start = nodes[startValue];
     visited[start->value] = true;
@@ -118,6 +126,7 @@ void Graph::traverse(int startValue) {
         q.pop();
         std::cout << current->value << " ";
 
+        // Visit all unvisited neighbors
         for (GraphNode* neighbor : current->neighbors) {
             if (!visited[neighbor->value]) {
                 visited[neighbor->value] = true;

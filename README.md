@@ -1,53 +1,116 @@
 # Data Structures & Algorithms - Finals Project
 
-This document outlines the standard workflow for contributing to the Data Structures and Algorithms final project. Following this process will ensure smooth integration and minimize conflicts.
+A modern, modular, and user-friendly C++ CLI application demonstrating core data structures and algorithms. Features robust exception handling, performance timing, and a polished interactive experience.
 
-### **1. Project Status**
+---
 
-*   [x] Stack (Static & Dynamic)
-*   [x] Queue (Static & Dynamic)
-*   [x] Tree (Binary Search Tree)
-*   [x] Graph (Adjacency List)
-*   [x] Sorting (Bubble, Merge, Quick)
+## Features
 
-### **2. How to Run the Project**
+- **Stacks:** Static and dynamic implementations
+- **Queues:** Static and dynamic implementations
+- **Binary Search Tree:** Insert, delete, search, and traversal
+- **Graph:** Adjacency list, display
+- **Sorting Algorithms:** Bubble, Merge, and Quick Sort with performance timing
+- **Exception Handling:** Robust error management using C++ exceptions
+- **Modular Design:** Each data structure's menu logic is in its own directory for maintainability
+- **Polished CLI:**
+  - Screen clears before every menu for a clean look
+  - "Press Enter to continue..." prompt after every operation
+  - Colorful, readable menus using ANSI codes
 
-This project is configured to be built and run easily within Visual Studio Code.
+---
 
-1.  **Open the project in VS Code.**
-2.  Go to the **Run and Debug** panel (the icon with a play button and a bug on the left-hand side).
-3.  Click the green **"Start Debugging"** play button at the top of the panel.
+## Directory Structure
 
-This will automatically compile the entire project and launch the main program.
-
-**Note on the `.vscode` directory:** We are intentionally committing the `.vscode` directory to the repository. It contains the `tasks.json` and `launch.json` files, which are essential for a consistent build and debug experience for all team members.
-
-### **3. The Core Development Cycle**
-
-This is the day-to-day workflow you will follow.
-
-**Step 1: Sync with the Team**
-
-Always start by pulling the latest changes from the repository to make sure you have the most up-to-date code from your teammates.
-
-```bash
-git pull origin main
+```
+Data-Struct-Finals/
+├── main.cpp
+├── Makefile
+├── README.md
+├── src/
+│   ├── stack/
+│   │   ├── StaticStack.h/.cpp
+│   │   ├── DynamicStack.h/.cpp
+│   │   ├── stackMenu.h/.cpp
+│   ├── queue/
+│   │   ├── StaticQueue.h/.cpp
+│   │   ├── DynamicQueue.h/.cpp
+│   │   ├── queueMenu.h/.cpp
+│   ├── tree/
+│   │   ├── BinaryTree.h/.cpp
+│   │   ├── treeMenu.h/.cpp
+│   ├── graph/
+│   │   ├── Graph.h/.cpp
+│   │   ├── graphMenu.h/.cpp
+│   ├── sorting/
+│   │   ├── SortingAlgorithms.h/.cpp
+│   │   ├── sortingMenu.h/.cpp
+│   ├── utils/
+│   │   ├── InputUtils.h/.cpp
+│   │   ├── UIUtils.h/.cpp
 ```
 
-**Step 2: Write Your Code**
+---
 
-Navigate to your assigned module directory (e.g., `src/queue/`) and implement your features in the `.h` and `.cpp` files.
+## How to Build & Run
 
-**Step 3: Integrate and Test**
+### **Using Make (Recommended for All Platforms)**
 
-1.  **Add your files to the `Makefile`:** Open the `Makefile` in the root directory and add your new `.cpp` files to the `SRCS` list.
-2.  **Run the project:** Use the "Run and Debug" button in VS Code to compile and run the entire project. This will test your changes in the context of the full application.
+1. **Open a terminal in the project root.**
+2. **Build the project:**
+   ```bash
+   make
+   ```
+3. **Run the program:**
+   ```bash
+   ./DsaFinalProject
+   ```
 
-**Step 4: Commit and Push Your Code**
+### **Using Visual Studio Code**
+- Open the folder in VS Code.
+- Use the Run/Debug panel or Terminal as above.
 
-Once your local tests pass and the main build is not broken by your changes, commit your work.
+---
 
-1.  **Add your changed files:**
+## Usage Tips
+- **Menus are modular:** Each data structure's menu is in its own folder for clarity and maintainability.
+- **Screen is cleared** before every menu for a clean interface.
+- **After every operation,** you'll see a "Press Enter to continue..." prompt so you never miss important output.
+- **Invalid input is handled** gracefully with error messages.
+
+---
+
+## Contributing & Extending
+- Add new features/algorithms by creating new `.h/.cpp` files in the appropriate `src/` subfolder.
+- Add new menu logic in the same folder as the data structure.
+- Update the `Makefile` to include new `.cpp` files.
+- Follow the modular structure for easy collaboration and maintenance.
+
+---
+
+## Development Environment Setup
+
+### **Windows**
+- Install [MSYS2](https://www.msys2.org/) and the C++ toolchain (`pacman -S --needed base-devel mingw-w64-x86_64-toolchain`).
+- Add `C:\msys64\mingw64\bin` to your PATH.
+- Install Git for Windows.
+
+### **macOS**
+- Install Xcode Command Line Tools:
+  ```bash
+  xcode-select --install
+  ```
+
+### **VS Code Extensions (Recommended)**
+- C/C++ Extension Pack (`ms-vscode.cpptools-extension-pack`)
+- Makefile Tools (`ms-vscode.makefile-tools`)
+
+---
+
+## Authors & Credits
+- Project modularized and polished for clarity, maintainability, and a professional CLI experience.
+- Contributions welcome!
+files:**
     ```bash
     # Example for the Queue developer
     git add src/queue/StaticQueue.h src/queue/StaticQueue.cpp

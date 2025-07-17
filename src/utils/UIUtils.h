@@ -5,9 +5,10 @@
 #include <string>
 #include <vector>
 
+// Utility functions for user interface display and formatting
 namespace UIUtils {
 
-    // ANSI Color Codes
+    // ANSI Color Codes for terminal text formatting
     const std::string RESET = "\033[0m";
     const std::string BOLD = "\033[1m";
     const std::string RED = "\033[31m";
@@ -17,12 +18,14 @@ namespace UIUtils {
     const std::string MAGENTA = "\033[35m";
     const std::string CYAN = "\033[36m";
 
+    // Display a formatted header with title
     void printHeader(const std::string& title) {
         std::cout << BOLD << MAGENTA << "========================================\n";
         std::cout << "    " << title << "\n";
         std::cout << "========================================\n\n" << RESET;
     }
 
+    // Display a numbered menu with options
     void printMenu(const std::vector<std::string>& options) {
         for (size_t i = 0; i < options.size(); ++i) {
             std::cout << BOLD << CYAN << i + 1 << ". " << RESET << options[i] << "\n";
@@ -30,11 +33,11 @@ namespace UIUtils {
         std::cout << "\nEnter your choice: ";
     }
 
+    // Displays a submenu with ASCII art title if available (see AsciiTitles.h)
+    void printSubMenu(const std::string& title, const std::vector<std::string>& options);
 
-    void printSubMenu(const std::string& title, const std::vector<std::string>& options) {
-        std::cout << "\n--- " << BOLD << YELLOW << title << RESET << " ---\n";
-        printMenu(options);
-    }
+    void clearScreen();     // Clear the terminal screen
+    void waitForEnter();    // Wait for user to press Enter
 
 }
 

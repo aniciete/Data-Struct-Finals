@@ -15,6 +15,9 @@ TARGET = DsaFinalProject
 SRCS = main.cpp \
        src/stack/stackMenu.cpp \
        src/queue/queueMenu.cpp \
+       src/tree/treeMenu.cpp \
+       src/graph/graphMenu.cpp \
+       src/sorting/sortingMenu.cpp \
        src/stack/StaticStack.cpp \
        src/stack/DynamicStack.cpp \
        src/queue/StaticQueue.cpp \
