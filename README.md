@@ -1,13 +1,14 @@
 # Data Structures & Algorithms - Finals Project
 
-<div align="center">
+
 
 ```
- ▗▄▄▖▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖   ▗▄▄▄▖ ▗▄▄▖ ▖▖    ▗▄▖ ▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖▗▖    ▗▄▄▖
+ ▗▄▄▖▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖   ▗▄▄▄▖ ▗▄▄▖ ▖▖    ▗▄▖ ▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖▗▖   ▗▄▄▖
 ▐▌   ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌   ▐▌    ▖    ▐▌ ▐▌▐▛▚▖▐▌▐▌   ▐▌   ▐▌   ▐▌
 ▐▌   ▐▛▀▜▌▐▛▀▜▌▐▛▀▚▖▐▌   ▐▛▀▀▘ ▝▀▚▖      ▐▛▀▜▌▐▌ ▝▜▌▐▌ ▜▌▐▛▀▀▘▐▌    ▝▀▚▖
 ▝▚▄▄▖▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▙▄▄▖▐▙▄▄▖▗▄▄▞▘      ▐▌ ▐▌▐▌  ▐▌▝▚▄▞▘▐▙▄▄▖▐▙▄▄▖▗▄▄▞▘
 ```
+<div align="center">
 
 **A comprehensive C++ implementation of fundamental data structures and algorithms**
 
