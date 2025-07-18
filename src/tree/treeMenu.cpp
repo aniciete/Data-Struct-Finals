@@ -6,32 +6,32 @@
 
 // Display the binary search tree menu and handle user choices
 void showTreeMenu() {
-    BinaryTree bst;  // Create a binary search tree instance
+    BinaryTree bst;
     int choice, value;
 
     do {
-        UIUtils::clearScreen();
-        // CORRECTED: Changed title to "Tree" to match the ASCII art key
-        UIUtils::printSubMenu("Tree", {"Insert Node", "Delete Node", "Search Node", "In-order Traversal", "Pre-order Traversal", "Post-order Traversal", "Back to Main Menu"});
-        choice = getValidatedInput<int>("", 1, 7); // Adjusted range
+        // No clearScreen() needed; printSubMenu handles it.
+        UIUtils::printSubMenu("Tree", {"Insert Node", "Delete Node", "Search Node", "In-order Traversal", "Pre-order Traversal", "Post-order Traversal", "← Back"});
+        choice = InputUtils::getValidatedInput<int>("", 1, 7);
 
         switch (choice) {
             case 1:
-                value = getValidatedInput<int>("Enter value to insert: ");
+                value = InputUtils::getValidatedInput<int>("Enter value to insert into BST: ");
                 bst.insertNode(value);
+                std::cout << UIUtils::GREEN << "Value inserted successfully." << UIUtils::RESET << std::endl;
                 UIUtils::waitForEnter();
                 break;
             case 2:
-                value = getValidatedInput<int>("Enter value to delete: ");
+                value = InputUtils::getValidatedInput<int>("Enter value to delete from BST: ");
                 bst.deleteNode(value);
                 UIUtils::waitForEnter();
                 break;
             case 3:
-                value = getValidatedInput<int>("Enter value to search: ");
+                value = InputUtils::getValidatedInput<int>("Enter value to search in BST: ");
                 if (bst.searchNode(value)) {
-                    std::cout << "Value found in the tree.\n";
+                    std::cout << UIUtils::GREEN << "Value found in the tree." << UIUtils::RESET << std::endl;
                 } else {
-                    std::cout << "Value not found in the tree.\n";
+                    std::cout << UIUtils::RED << "Value not found in the tree." << UIUtils::RESET << std::endl;
                 }
                 UIUtils::waitForEnter();
                 break;
@@ -40,12 +40,12 @@ void showTreeMenu() {
                 bst.inOrderTraversal();
                 UIUtils::waitForEnter();
                 break;
-            case 5: // New case for Pre-order
+            case 5:
                 std::cout << "Pre-order traversal: ";
                 bst.preOrderTraversal();
                 UIUtils::waitForEnter();
                 break;
-            case 6: // New case for Post-order
+            case 6:
                 std::cout << "Post-order traversal: ";
                 bst.postOrderTraversal();
                 UIUtils::waitForEnter();
@@ -55,5 +55,5 @@ void showTreeMenu() {
             default:
                 std::cout << "Invalid choice. Please try again.\n";
         }
-    } while (choice != 7); // Adjusted loop condition
+    } while (choice != 7);
 }

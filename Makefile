@@ -28,7 +28,6 @@ SRCS = main.cpp \
        src/utils/InputUtils.cpp \
        src/utils/UIUtils.cpp \
        src/utils/AsciiTitles.cpp \
-       src/utils/TestRunner.cpp
 
 # This is a rule that tells make how to create the final executable
 $(TARGET): $(SRCS)

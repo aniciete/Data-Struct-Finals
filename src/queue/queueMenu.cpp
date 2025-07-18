@@ -13,9 +13,9 @@ void handleDynamicQueue();
 void showQueueMenu() {
     int choice;
     do {
-        UIUtils::clearScreen();
-        UIUtils::printSubMenu("Queue", {"Static Queue", "Dynamic Queue", "Back to Main Menu"});
-        choice = getValidatedInput<int>("", 1, 3);
+        // No clearScreen() needed; printSubMenu handles it.
+        UIUtils::printSubMenu("Queue", {"Static Queue", "Dynamic Queue", "← Back"});
+        choice = InputUtils::getValidatedInput<int>("", 1, 3);
 
         switch (choice) {
             case 1:
@@ -36,18 +36,18 @@ void handleStaticQueue() {
     int choice, value;
 
     do {
-        UIUtils::clearScreen();
-        UIUtils::printSubMenu("Static Queue Menu", {"Enqueue", "Dequeue", "Front", "Rear", "Display", "Back to Queue Menu"});
-        choice = getValidatedInput<int>("", 1, 6);
+        // No clearScreen() needed; printSubMenu handles it.
+        UIUtils::printSubMenu("Static Queue Menu", {"Enqueue", "Dequeue", "Front", "Rear", "Display", "← Back"});
+        choice = InputUtils::getValidatedInput<int>("", 1, 6);
 
         switch (choice) {
             case 1: {
-                value = getValidatedInput<int>("Enter value to enqueue: ");
+                value = InputUtils::getValidatedInput<int>("Enter value to enqueue into static queue: ");
                 try {
                     queue.enqueue(value);
-                    std::cout << "Enqueued " << value << " successfully.\n";
+                    std::cout << UIUtils::GREEN << "Enqueued " << value << " successfully." << UIUtils::RESET << std::endl;
                 } catch (const std::runtime_error& e) {
-                    std::cout << "Error: " << e.what() << std::endl;
+                    std::cout << UIUtils::RED << "❌ Error: " << e.what() << UIUtils::RESET << std::endl;
                 }
                 break;
             }
@@ -55,9 +55,9 @@ void handleStaticQueue() {
                 try {
                     int frontVal = queue.front();
                     queue.dequeue();
-                    std::cout << "Dequeued " << frontVal << " successfully." << std::endl;
+                    std::cout << UIUtils::GREEN << "Dequeued " << frontVal << " successfully." << UIUtils::RESET << std::endl;
                 } catch (const std::runtime_error& e) {
-                    std::cout << "Error: " << e.what() << std::endl;
+                    std::cout << UIUtils::RED << "❌ Error: " << e.what() << UIUtils::RESET << std::endl;
                 }
                 break;
             }
@@ -86,7 +86,7 @@ void handleStaticQueue() {
                 return;
         }
         if (choice != 6) {
-            UIUtils::waitForEnter(); // Added pause
+            UIUtils::waitForEnter();
         }
     } while (choice != 6);
 }
@@ -97,24 +97,24 @@ void handleDynamicQueue() {
     int choice, value;
 
     do {
-        UIUtils::clearScreen();
-        UIUtils::printSubMenu("Dynamic Queue Menu", {"Enqueue", "Dequeue", "Front", "Rear", "Display", "Back to Queue Menu"});
-        choice = getValidatedInput<int>("", 1, 6);
+        // No clearScreen() needed; printSubMenu handles it.
+        UIUtils::printSubMenu("Dynamic Queue Menu", {"Enqueue", "Dequeue", "Front", "Rear", "Display", "← Back"});
+        choice = InputUtils::getValidatedInput<int>("", 1, 6);
 
         switch (choice) {
             case 1: {
-                value = getValidatedInput<int>("Enter value to enqueue: ");
+                value = InputUtils::getValidatedInput<int>("Enter value to enqueue into dynamic queue: ");
                 queue.enqueue(value);
-                std::cout << "Enqueued " << value << " successfully.\n";
+                std::cout << UIUtils::GREEN << "Enqueued " << value << " successfully." << UIUtils::RESET << std::endl;
                 break;
             }
             case 2: {
                 try {
                     int frontVal = queue.front();
                     queue.dequeue();
-                    std::cout << "Dequeued " << frontVal << " successfully." << std::endl;
+                    std::cout << UIUtils::GREEN << "Dequeued " << frontVal << " successfully." << UIUtils::RESET << std::endl;
                 } catch (const std::runtime_error& e) {
-                    std::cout << "Error: " << e.what() << std::endl;
+                    std::cout << UIUtils::RED << "❌ Error: " << e.what() << UIUtils::RESET << std::endl;
                 }
                 break;
             }
@@ -143,7 +143,7 @@ void handleDynamicQueue() {
                 return;
         }
         if (choice != 6) {
-            UIUtils::waitForEnter(); // Added pause
+            UIUtils::waitForEnter();
         }
     } while (choice != 6);
 }

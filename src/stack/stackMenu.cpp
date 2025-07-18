@@ -14,8 +14,8 @@ void showStackMenu() {
     int choice;
     do {
         UIUtils::clearScreen();
-        UIUtils::printSubMenu("Stack", {"Static Stack", "Dynamic Stack", "Back to Main Menu"});
-        choice = getValidatedInput<int>("", 1, 3);
+        UIUtils::printSubMenu("Stack", {"Static Stack", "Dynamic Stack", "← Back"});
+        choice = InputUtils::getValidatedInput<int>("", 1, 3);
 
         switch (choice) {
             case 1:
@@ -39,26 +39,26 @@ void handleStaticStack() {
 
     do {
         UIUtils::clearScreen();
-        UIUtils::printSubMenu("Static Stack Menu", {"Push", "Pop", "Peek", "Display", "Back to Stack Menu"});
-        choice = getValidatedInput<int>("", 1, 5);
+        UIUtils::printSubMenu("Static Stack Menu", {"Push", "Pop", "Peek", "Display", "← Back"});
+        choice = InputUtils::getValidatedInput<int>("", 1, 5);
 
         switch (choice) {
             case 1: {
-                value = getValidatedInput<int>("Enter value to push: ");
+                value = InputUtils::getValidatedInput<int>("Enter value to push onto static stack: ");
                 try {
                     stack.push(value);
-                    std::cout << "Pushed " << value << " onto the stack.\n";
+                    std::cout << UIUtils::GREEN << "Pushed " << value << " onto the stack." << UIUtils::RESET << std::endl;
                 } catch (const std::runtime_error& e) {
-                    std::cout << "Error: " << e.what() << std::endl;
+                    std::cout << UIUtils::RED << "❌ Error: " << e.what() << UIUtils::RESET << std::endl;
                 }
                 break;
             }
             case 2: {
                 try {
                     value = stack.pop();
-                    std::cout << "Popped value: " << value << std::endl;
+                    std::cout << UIUtils::GREEN << "Popped value: " << value << UIUtils::RESET << std::endl;
                 } catch (const std::runtime_error& e) {
-                    std::cout << "Error: " << e.what() << std::endl;
+                    std::cout << UIUtils::RED << "❌ Error: " << e.what() << UIUtils::RESET << std::endl;
                 }
                 break;
             }
@@ -90,22 +90,22 @@ void handleDynamicStack() {
 
     do {
         UIUtils::clearScreen();
-        UIUtils::printSubMenu("Dynamic Stack Menu", {"Push", "Pop", "Peek", "Display", "Back to Stack Menu"});
-        choice = getValidatedInput<int>("", 1, 5);
+        UIUtils::printSubMenu("Dynamic Stack Menu", {"Push", "Pop", "Peek", "Display", "← Back"});
+        choice = InputUtils::getValidatedInput<int>("", 1, 5);
 
         switch (choice) {
             case 1: {
-                value = getValidatedInput<int>("Enter value to push: ");
+                value = InputUtils::getValidatedInput<int>("Enter value to push onto dynamic stack: ");
                 stack.push(value);
-                std::cout << "Pushed " << value << " onto the stack.\n";
+                std::cout << UIUtils::GREEN << "Pushed " << value << " onto the stack." << UIUtils::RESET << std::endl;
                 break;
             }
             case 2: {
                 try {
                     value = stack.pop();
-                    std::cout << "Popped value: " << value << std::endl;
+                    std::cout << UIUtils::GREEN << "Popped value: " << value << UIUtils::RESET << std::endl;
                 } catch (const std::runtime_error& e) {
-                    std::cout << "Error: " << e.what() << std::endl;
+                    std::cout << UIUtils::RED << "❌ Error: " << e.what() << UIUtils::RESET << std::endl;
                 }
                 break;
             }

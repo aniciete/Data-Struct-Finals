@@ -5,31 +5,66 @@
 #include <string>
 #include <vector>
 
-// Utility functions for user interface display and formatting
+/**
+ * @brief Namespace for utility functions related to the user interface.
+ * 
+ * This namespace provides functions for displaying and formatting UI elements
+ * such as menus, titles, and headers, as well as handling screen clearing
+ * and animations.
+ */
 namespace UIUtils {
 
-    // ANSI Color Codes for terminal text formatting
-    const std::string RESET = "\033[0m";
-    const std::string BOLD = "\033[1m";
-    const std::string RED = "\033[31m";
-    const std::string GREEN = "\033[32m";
-    const std::string YELLOW = "\033[33m";
-    const std::string BLUE = "\033[34m";
+    // ANSI Color Codes for formatting terminal text.
+    const std::string RESET   = "\033[0m";
+    const std::string BOLD    = "\033[1m";
+    const std::string RED     = "\033[31m";
+    const std::string GREEN   = "\033[32m";
+    const std::string YELLOW  = "\033[33m";
+    const std::string BLUE    = "\033[34m";
     const std::string MAGENTA = "\033[35m";
-    const std::string CYAN = "\033[36m";
+    const std::string CYAN    = "\033[36m";
 
-    // Display a formatted header with title
+    /**
+     * @brief Displays a formatted header with a title.
+     * @param title The title to be displayed in the header.
+     */
     void printHeader(const std::string& title);
 
-    // Display a numbered menu with options
+    /**
+     * @brief Displays a numbered menu with a list of options.
+     * @param options A vector of strings representing the menu options.
+     */
     void printMenu(const std::vector<std::string>& options);
 
-    // Displays a submenu with ASCII art title if available (see AsciiTitles.h)
+    /**
+     * @brief Displays a submenu, which includes clearing the screen, printing a title, and a menu.
+     * @param title The title of the submenu, used to fetch ASCII art.
+     * @param options A vector of strings for the menu options.
+     */
     void printSubMenu(const std::string& title, const std::vector<std::string>& options);
 
-    void clearScreen();     // Clear the terminal screen
-    void waitForEnter();    // Wait for user to press Enter
+    /**
+     * @brief Displays a standalone, bordered ASCII art title.
+     * @param titleKey The key to look up the ASCII art in the AsciiTitles map.
+     */
+    void printTitle(const std::string& titleKey);
 
-}
+    /**
+     * @brief Clears the terminal screen.
+     */
+    void clearScreen();
+
+    /**
+     * @brief Pauses execution and waits for the user to press the Enter key.
+     */
+    void waitForEnter();
+
+    /**
+     * @brief Displays a simple loading animation for a specified duration.
+     * @param duration_ms The total duration of the animation in milliseconds.
+     */
+    void showLoadingAnimation(int duration_ms);
+
+} // namespace UIUtils
 
 #endif // UI_UTILS_H
