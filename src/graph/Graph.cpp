@@ -46,29 +46,28 @@ void Graph::addEdge(int v1, int v2) {
 // Remove a vertex and all its associated edges from the graph
 void Graph::removeVertex(int value) {
     auto it = nodes.find(value);
-    if (it != nodes.end()) {
-        GraphNode* toRemove = it->second;
+    if (it == nodes.end()) {
+        std::cout << "Vertex does not exist.\n";
+        return;
+    }
 
-        // Remove this node from neighbors' lists
-        // Remove this node from every other node's neighbor list
-        for (auto& pair : nodes) {
-            GraphNode* node = pair.second;
+    GraphNode* toRemove = it->second;
+
+    // Remove all edges connected to this vertex
+    for (auto& pair : nodes) {
+        GraphNode* node = pair.second;
+        if (node != toRemove) {
             node->neighbors.erase(
-                std::remove_if(
-                    node->neighbors.begin(),
-                    node->neighbors.end(),
-                    [toRemove](GraphNode* neighbor) { return neighbor == toRemove; }
-                ),
+                std::remove(node->neighbors.begin(), node->neighbors.end(), toRemove),
                 node->neighbors.end()
             );
         }
-
-        delete toRemove; // Free memory
-        nodes.erase(it); // Remove from map
-        std::cout << "Vertex " << value << " removed.\n";
-    } else {
-        std::cout << "Vertex does not exist.\n";
     }
+
+    // Now, remove the vertex itself
+    delete toRemove;
+    nodes.erase(it);
+    std::cout << "Vertex " << value << " removed.\n";
 }
 
 // Remove the edge between two vertices if both exist
@@ -135,4 +134,37 @@ void Graph::traverse(int startValue) {
         }
     }
     std::cout << "\n";
+}
+
+// Get BFS traversal as a string
+std::string Graph::getTraversal(int startValue) {
+    if (nodes.find(startValue) == nodes.end()) {
+        return "Start vertex does not exist.";
+    }
+
+    std::string result = "";
+    std::map<int, bool> visited;
+    std::queue<GraphNode*> q;
+
+    GraphNode* start = nodes[startValue];
+    visited[start->value] = true;
+    q.push(start);
+
+    while (!q.empty()) {
+        GraphNode* current = q.front();
+        q.pop();
+        result += std::to_string(current->value) + " ";
+
+        for (GraphNode* neighbor : current->neighbors) {
+            if (!visited[neighbor->value]) {
+                visited[neighbor->value] = true;
+                q.push(neighbor);
+            }
+        }
+    }
+    // Trim trailing space
+    if (!result.empty()) {
+        result.pop_back();
+    }
+    return result;
 }

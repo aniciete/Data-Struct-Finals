@@ -1,6 +1,7 @@
 #include "UIUtils.h"
 #include "AsciiTitles.h"
 #include <iostream>
+#include <limits> // Required for std::numeric_limits
 
 namespace UIUtils {
 
@@ -16,7 +17,9 @@ void clearScreen() {
 
 // Wait for user to press Enter before continuing
 void waitForEnter() {
+    // This function is now enabled to allow users to see output
     std::cout << "\nPress Enter to continue...";
+    // Clear any leftover characters in the input buffer
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
 }
@@ -30,6 +33,19 @@ void printSubMenu(const std::string& title, const std::vector<std::string>& opti
         std::cout << "\n--- " << BOLD << YELLOW << title << RESET << " ---\n";  // Fallback formatting
     }
     printMenu(options);
+}
+
+void printHeader(const std::string& title) {
+    std::cout << BOLD << MAGENTA << "========================================\n";
+    std::cout << "    " << title << "\n";
+    std::cout << "========================================\n\n" << RESET;
+}
+
+void printMenu(const std::vector<std::string>& options) {
+    for (size_t i = 0; i < options.size(); ++i) {
+        std::cout << BOLD << CYAN << i + 1 << ". " << RESET << options[i] << "\n";
+    }
+    std::cout << "\nEnter your choice: ";
 }
 
 } // namespace UIUtils

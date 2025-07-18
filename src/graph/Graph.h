@@ -4,7 +4,7 @@
 #include <iostream>
 #include <map>
 #include <queue>
-#include "graph/GraphNode.h"
+#include "GraphNode.h"
 
 // Represents an undirected graph using adjacency lists
 class Graph {
@@ -27,6 +27,7 @@ public:
     void display();
     // Traverse the graph using BFS starting from a vertex
     void traverse(int startValue);
+    std::string getTraversal(int startValue); // Get BFS traversal as a string
 };
 
 #endif // GRAPH_H

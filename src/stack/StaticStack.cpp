@@ -51,3 +51,13 @@ void StaticStack::display() {
     }
     std::cout << std::endl;
 }
+
+// Getter for the top index
+int StaticStack::getTop() {
+    return top;
+}
+
+// Getter for the current size
+int StaticStack::size() {
+    return top + 1;
+}

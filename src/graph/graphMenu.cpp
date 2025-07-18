@@ -10,7 +10,8 @@ void showGraphMenu() {
     int choice;
     do {
         UIUtils::clearScreen(); // Clear the console for a fresh menu
-        UIUtils::printSubMenu("Graph Menu", {"Add Vertex", "Add Edge", "Remove Vertex", "Remove Edge", "Display Graph", "Traverse Graph (BFS)", "Back to Main Menu"}); // Show menu options
+        // CORRECTED: Changed title to "Graph" to match the ASCII art key
+        UIUtils::printSubMenu("Graph", {"Add Vertex", "Add Edge", "Remove Vertex", "Remove Edge", "Display Graph", "Traverse Graph (BFS)", "Back to Main Menu"}); // Show menu options
         choice = getValidatedInput<int>("", 1, 7); // Get user choice (1-7)
 
         int v1, v2; // Variables for vertex input
@@ -61,4 +62,3 @@ void showGraphMenu() {
         }
     } while (choice != 7); // Repeat until user chooses to go back
 }
-

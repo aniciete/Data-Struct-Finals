@@ -66,3 +66,18 @@ void StaticQueue::display() const {
     }
     std::cout << "\n";
 }
+
+// Getter for the front index
+int StaticQueue::getFront() const {
+    return frontIndex;
+}
+
+// Getter for the rear index
+int StaticQueue::getRear() const {
+    return rearIndex;
+}
+
+// Getter for the current size
+int StaticQueue::getSize() const {
+    return count;
+}

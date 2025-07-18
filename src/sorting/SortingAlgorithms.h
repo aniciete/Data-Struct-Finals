@@ -29,7 +29,9 @@ public:
         if (std::distance(first, last) > 1) {
             ForwardIt p = partition(first, last);
             quickSort(first, p);
-            quickSort(std::next(p), last);
+            if (p != last) {
+                quickSort(std::next(p), last);
+            }
         }
     }
 
@@ -53,53 +55,27 @@ private:
         }
 
         while (l_it != left.end()) {
-        if (*l_it <= *r_it) {
             *it++ = *l_it++;
-        } else {
+        }
+
+        while (r_it != right.end()) {
             *it++ = *r_it++;
         }
     }
 
-    while (l_it != left.end()) {
-        *it++ = *l_it++;
-    }
-
-    while (r_it != right.end()) {
-        *it++ = *r_it++;
-    }
-}
-
-template<typename BidirIt>
-void mergeSort(BidirIt first, BidirIt last) {
-    auto dist = std::distance(first, last);
-    if (dist > 1) {
-        BidirIt middle = std::next(first, dist / 2);
-        mergeSort(first, middle);
-        mergeSort(middle, last);
-        merge(first, middle, last);
-    }
-}
-// Partition helper for quickSort
-template<typename ForwardIt>
-ForwardIt partition(ForwardIt first, ForwardIt last) {
-    auto pivot = *std::prev(last);
-    ForwardIt i = first;
-    for (ForwardIt j = first; j != std::prev(last); ++j) {
-        if (*j < pivot) {
-            std::swap(*i++, *j);
+    // Partition helper for quickSort
+    template<typename ForwardIt>
+    static ForwardIt partition(ForwardIt first, ForwardIt last) {
+        auto pivot = *std::prev(last);
+        ForwardIt i = first;
+        for (ForwardIt j = first; j != std::prev(last); ++j) {
+            if (*j < pivot) {
+                std::swap(*i++, *j);
+            }
         }
+        std::swap(*i, *std::prev(last));
+        return i;
     }
-    std::swap(*i, *std::prev(last));
-    return i;
-}
-
-template<typename ForwardIt>
-void quickSort(ForwardIt first, ForwardIt last) {
-    if (std::distance(first, last) > 1) {
-        ForwardIt p = partition(first, last);
-        quickSort(first, p);
-        quickSort(std::next(p), last);
-    }
-}
+};
 
 #endif // SORTING_ALGORITHMS_H

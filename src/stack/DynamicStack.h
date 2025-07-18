@@ -22,7 +22,8 @@ public:
     void push(int value);     // Add element to top of stack
     int pop();                // Remove and return top element
     int peek();               // Return top element without removing
-    void display();           // Display all stack elements
+    void display();      // Display all stack elements
+    int size();          // Get the current size of the stack
 };
 
 #endif // DYNAMIC_STACK_H

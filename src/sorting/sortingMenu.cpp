@@ -6,18 +6,13 @@
 #include "../utils/UIUtils.h"
 #include "../utils/InputUtils.h"
 
-// Forward declarations for local helpers
-int getArrayChoice();
-int getArraySize();
-std::vector<int> getCustomArray(int size);
-void displayArray(const std::vector<int>& arr, const std::string& label);
-
 // Display the sorting algorithms menu and handle user choices
 void showSortingMenu() {
     int choice;
     do {
         UIUtils::clearScreen();
-        UIUtils::printSubMenu("Sorting Algorithms Menu", {"Bubble Sort", "Merge Sort", "Quick Sort", "Back to Main Menu"});
+        // CORRECTED: Changed title to "Sort" to match the ASCII art key
+        UIUtils::printSubMenu("Sort", {"Bubble Sort", "Merge Sort", "Quick Sort", "Back to Main Menu"});
         choice = getValidatedInput<int>("", 1, 4);
 
         if (choice >= 1 && choice <= 3) {
@@ -63,33 +58,4 @@ void showSortingMenu() {
             std::cout << "Invalid choice. Please try again.\n";
         }
     } while (choice != 4);
-}
-
-// Get user's choice for array source (default or custom)
-int getArrayChoice() {
-    UIUtils::printSubMenu("Choose Array Source", {"Use default array", "Enter custom array"});
-    return getValidatedInput<int>("", 1, 2);
-}
-
-// Get the size of the custom array from user
-int getArraySize() {
-    return getValidatedInput<int>("Enter the number of elements: ", 1, 100); // Limit size for practicality
-}
-
-// Get custom array elements from user input
-std::vector<int> getCustomArray(int size) {
-    std::vector<int> arr;
-    for (int i = 0; i < size; ++i) {
-        arr.push_back(getValidatedInput<int>("Enter element " + std::to_string(i + 1) + ": "));
-    }
-    return arr;
-}
-
-// Display array contents with a descriptive label
-void displayArray(const std::vector<int>& arr, const std::string& label) {
-    std::cout << label << ": ";
-    for (int x : arr) {
-        std::cout << x << " ";
-    }
-    std::cout << std::endl;
 }

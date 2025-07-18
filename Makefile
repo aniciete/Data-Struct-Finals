@@ -2,11 +2,11 @@
 CXX = g++
 
 # Compiler flags
-# -std=c++11: Use the C++11 standard
+# -std=c++14: Use the C++14 standard
 # -Isrc:      Allows you to use #include "stack/StaticStack.h" instead of #include "src/stack/..."
 # -g:         Include debugging information
 # -Wall:      Turn on all warnings
-CXXFLAGS = -std=c++11 -Isrc -g -Wall
+CXXFLAGS = -std=c++14 -Isrc -g -Wall
 
 # The final executable name
 TARGET = DsaFinalProject
@@ -25,7 +25,10 @@ SRCS = main.cpp \
        src/tree/BinaryTree.cpp \
        src/graph/Graph.cpp \
        src/sorting/SortingAlgorithms.cpp \
-       src/utils/InputUtils.cpp
+       src/utils/InputUtils.cpp \
+       src/utils/UIUtils.cpp \
+       src/utils/AsciiTitles.cpp \
+       src/utils/TestRunner.cpp
 
 # This is a rule that tells make how to create the final executable
 $(TARGET): $(SRCS)

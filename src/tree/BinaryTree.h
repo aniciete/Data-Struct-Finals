@@ -2,6 +2,7 @@
 #define BINARY_TREE_H
 
 #include "TreeNode.h"
+#include <string>
 
 // Binary search tree implementation
 class BinaryTree {
@@ -10,9 +11,10 @@ private:
     
     // Helper functions for recursive operations
     TreeNode* insert(TreeNode* node, int data);  // Insert a new node recursively
-    TreeNode* remove(TreeNode* node, int data);  // Remove a node recursively
+    TreeNode* remove(TreeNode* node, int data, bool& found);  // Remove a node recursively
     TreeNode* findMin(TreeNode* node);  // Find the minimum value in the tree
     void inOrder(TreeNode* node);  // Perform inorder traversal recursively
+    void getInOrder(TreeNode* node, std::string& result); // Helper for getInOrderTraversal
     void preOrder(TreeNode* node);  // Perform preorder traversal recursively
     void postOrder(TreeNode* node);  // Perform postorder traversal recursively
     bool search(TreeNode* node, int key);  // Search for a value recursively
@@ -27,6 +29,7 @@ public:
     void postOrderTraversal();       // Display tree in postorder (left-right-root)
     bool searchNode(int key);        // Search for a value in the tree
     void destroyTree(TreeNode* node); // Helper function to destroy the tree
+    std::string getInOrderTraversal(); // Get in-order traversal as a string
 };
 
 #endif // BINARY_TREE_H

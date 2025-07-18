@@ -59,3 +59,14 @@ void DynamicStack::display() {
     }
     std::cout << std::endl;
 }
+
+// Get the current size of the stack
+int DynamicStack::size() {
+    int count = 0;
+    Node* temp = top;
+    while (temp != nullptr) {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}

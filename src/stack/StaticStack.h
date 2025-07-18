@@ -4,12 +4,12 @@
 #include <iostream>
 #include <stdexcept>
 
-const int MAX_SIZE = 100; // Maximum size of the stack
-
 // Static stack implementation using fixed-size array
 class StaticStack {
-private:
+public:
     static const int MAX_SIZE = 100;  // Maximum stack capacity
+
+private:
     int arr[MAX_SIZE];                // Array to store stack elements
     int top;                          // Index of the top element
 
@@ -21,6 +21,8 @@ public:
     int pop();               // Remove and return top element
     int peek();              // Return top element without removing
     void display();          // Display all stack elements
+    int getTop();            // Getter for the top index
+    int size();              // Getter for the current size
 };
 
 #endif // STATIC_STACK_H

@@ -19,19 +19,10 @@ namespace UIUtils {
     const std::string CYAN = "\033[36m";
 
     // Display a formatted header with title
-    void printHeader(const std::string& title) {
-        std::cout << BOLD << MAGENTA << "========================================\n";
-        std::cout << "    " << title << "\n";
-        std::cout << "========================================\n\n" << RESET;
-    }
+    void printHeader(const std::string& title);
 
     // Display a numbered menu with options
-    void printMenu(const std::vector<std::string>& options) {
-        for (size_t i = 0; i < options.size(); ++i) {
-            std::cout << BOLD << CYAN << i + 1 << ". " << RESET << options[i] << "\n";
-        }
-        std::cout << "\nEnter your choice: ";
-    }
+    void printMenu(const std::vector<std::string>& options);
 
     // Displays a submenu with ASCII art title if available (see AsciiTitles.h)
     void printSubMenu(const std::string& title, const std::vector<std::string>& options);

@@ -12,25 +12,27 @@ void handleDynamicQueue();
 // Display the main queue menu and handle user choices
 void showQueueMenu() {
     int choice;
-    UIUtils::clearScreen();
-    UIUtils::printSubMenu("Queue Operations", {"Static Queue", "Dynamic Queue", "Back to Main Menu"});
-    choice = getValidatedInput<int>("", 1, 3);
+    do {
+        UIUtils::clearScreen();
+        UIUtils::printSubMenu("Queue", {"Static Queue", "Dynamic Queue", "Back to Main Menu"});
+        choice = getValidatedInput<int>("", 1, 3);
 
-    switch (choice) {
-        case 1:
-            handleStaticQueue();  // Show static queue operations
-            break;
-        case 2:
-            handleDynamicQueue(); // Show dynamic queue operations
-            break;
-        case 3:
-            return;               // Go back to main menu
-    }
+        switch (choice) {
+            case 1:
+                handleStaticQueue();
+                break;
+            case 2:
+                handleDynamicQueue();
+                break;
+            case 3:
+                return;
+        }
+    } while (choice != 3);
 }
 
 // Handle static queue operations menu
 void handleStaticQueue() {
-    StaticQueue queue;  // Create a static queue instance
+    StaticQueue queue;
     int choice, value;
 
     do {
@@ -40,27 +42,26 @@ void handleStaticQueue() {
 
         switch (choice) {
             case 1: {
-                // Enqueue operation: Add element to rear of queue
                 value = getValidatedInput<int>("Enter value to enqueue: ");
                 try {
                     queue.enqueue(value);
+                    std::cout << "Enqueued " << value << " successfully.\n";
                 } catch (const std::runtime_error& e) {
                     std::cout << "Error: " << e.what() << std::endl;
                 }
                 break;
             }
             case 2: {
-                // Dequeue operation: Remove element from front of queue
                 try {
+                    int frontVal = queue.front();
                     queue.dequeue();
-                    std::cout << "Dequeued successfully." << std::endl;
+                    std::cout << "Dequeued " << frontVal << " successfully." << std::endl;
                 } catch (const std::runtime_error& e) {
                     std::cout << "Error: " << e.what() << std::endl;
                 }
                 break;
             }
             case 3: {
-                // Front operation: View front element without removing
                 try {
                     value = queue.front();
                     std::cout << "Front element: " << value << std::endl;
@@ -70,7 +71,6 @@ void handleStaticQueue() {
                 break;
             }
             case 4: {
-                // Rear operation: View rear element without removing
                 try {
                     value = queue.rear();
                     std::cout << "Rear element: " << value << std::endl;
@@ -80,21 +80,20 @@ void handleStaticQueue() {
                 break;
             }
             case 5:
-                // Display all queue elements
                 queue.display();
                 break;
             case 6:
-                // Go back to queue menu
                 return;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
+        }
+        if (choice != 6) {
+            UIUtils::waitForEnter(); // Added pause
         }
     } while (choice != 6);
 }
 
 // Handle dynamic queue operations menu
 void handleDynamicQueue() {
-    DynamicQueue queue;  // Create a dynamic queue instance
+    DynamicQueue queue;
     int choice, value;
 
     do {
@@ -104,27 +103,22 @@ void handleDynamicQueue() {
 
         switch (choice) {
             case 1: {
-                // Enqueue operation: Add element to rear of queue
                 value = getValidatedInput<int>("Enter value to enqueue: ");
-                try {
-                    queue.enqueue(value);
-                } catch (const std::runtime_error& e) {
-                    std::cout << "Error: " << e.what() << std::endl;
-                }
+                queue.enqueue(value);
+                std::cout << "Enqueued " << value << " successfully.\n";
                 break;
             }
             case 2: {
-                // Dequeue operation: Remove element from front of queue
                 try {
+                    int frontVal = queue.front();
                     queue.dequeue();
-                    std::cout << "Dequeued successfully." << std::endl;
+                    std::cout << "Dequeued " << frontVal << " successfully." << std::endl;
                 } catch (const std::runtime_error& e) {
                     std::cout << "Error: " << e.what() << std::endl;
                 }
                 break;
             }
             case 3: {
-                // Front operation: View front element without removing
                 try {
                     value = queue.front();
                     std::cout << "Front element: " << value << std::endl;
@@ -134,7 +128,6 @@ void handleDynamicQueue() {
                 break;
             }
             case 4: {
-                // Rear operation: View rear element without removing
                 try {
                     value = queue.rear();
                     std::cout << "Rear element: " << value << std::endl;
@@ -144,14 +137,13 @@ void handleDynamicQueue() {
                 break;
             }
             case 5:
-                // Display all queue elements
                 queue.display();
                 break;
             case 6:
-                // Go back to queue menu
                 return;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
+        }
+        if (choice != 6) {
+            UIUtils::waitForEnter(); // Added pause
         }
     } while (choice != 6);
 }

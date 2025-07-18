@@ -23,6 +23,7 @@ public:
     int front() const;        // Return front element without removing
     int rear() const;         // Return rear element without removing
     void display() const;     // Display all queue elements
+    int getSize() const;      // Get the current size of the queue
 };
 
 #endif // DYNAMIC_QUEUE_H

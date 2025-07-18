@@ -6,32 +6,39 @@
 #include <limits>
 
 #include <iostream>
+#include <sstream>
 
 // Template function to get validated input with optional min/max range checking
 template <typename T>
 T getValidatedInput(const std::string& prompt, T min = std::numeric_limits<T>::min(), T max = std::numeric_limits<T>::max()) {
     T value;
+    std::string line;
+
     while (true) {
         std::cout << prompt;
-        std::cin >> value;
+        if (!std::getline(std::cin, line)) {
+            // This handles EOF or other fatal stream errors
+            std::cout << "End of input reached or stream error. Exiting.\n";
+            exit(0);
+        }
 
-        // Handle invalid input (non-numeric)
-        if (std::cin.fail()) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        // Ignore empty lines, which are common in test files
+        if (line.empty() || line.find_first_not_of(" \t\n\v\f\r") == std::string::npos) {
+            continue;
+        }
+
+        std::stringstream ss(line);
+        // Check that the entire line was consumed by the extraction
+        if (ss >> value && (ss >> std::ws).eof()) {
+            if (value >= min && value <= max) {
+                return value; // Success
+            } else {
+                std::cout << "Input out of range. Please enter a number between " << min << " and " << max << ".\n";
+            }
+        } else {
+            // This handles non-numeric input or lines with extra garbage
             std::cout << "Invalid input. Please enter a valid number.\n";
-            continue;
         }
-
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-        // Check if input is within valid range
-        if (value < min || value > max) {
-            std::cout << "Input out of range. Please enter a number between " << min << " and " << max << ".\n";
-            continue;
-        }
-
-        return value;
     }
 }
 

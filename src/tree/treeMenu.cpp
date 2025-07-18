@@ -11,24 +11,22 @@ void showTreeMenu() {
 
     do {
         UIUtils::clearScreen();
-        UIUtils::printSubMenu("Binary Search Tree Menu", {"Insert Node", "Delete Node", "Search Node", "In-order Traversal", "Back to Main Menu"});
-        choice = getValidatedInput<int>("", 1, 5);
+        // CORRECTED: Changed title to "Tree" to match the ASCII art key
+        UIUtils::printSubMenu("Tree", {"Insert Node", "Delete Node", "Search Node", "In-order Traversal", "Pre-order Traversal", "Post-order Traversal", "Back to Main Menu"});
+        choice = getValidatedInput<int>("", 1, 7); // Adjusted range
 
         switch (choice) {
             case 1:
-                // Insert operation: Add a new node to the tree
                 value = getValidatedInput<int>("Enter value to insert: ");
                 bst.insertNode(value);
                 UIUtils::waitForEnter();
                 break;
             case 2:
-                // Delete operation: Remove a node from the tree
                 value = getValidatedInput<int>("Enter value to delete: ");
                 bst.deleteNode(value);
                 UIUtils::waitForEnter();
                 break;
             case 3:
-                // Search operation: Look for a value in the tree
                 value = getValidatedInput<int>("Enter value to search: ");
                 if (bst.searchNode(value)) {
                     std::cout << "Value found in the tree.\n";
@@ -38,16 +36,24 @@ void showTreeMenu() {
                 UIUtils::waitForEnter();
                 break;
             case 4:
-                // Traversal operation: Display tree in sorted order
                 std::cout << "In-order traversal: ";
                 bst.inOrderTraversal();
                 UIUtils::waitForEnter();
                 break;
-            case 5:
-                // Go back to main menu
-                return;
+            case 5: // New case for Pre-order
+                std::cout << "Pre-order traversal: ";
+                bst.preOrderTraversal();
+                UIUtils::waitForEnter();
+                break;
+            case 6: // New case for Post-order
+                std::cout << "Post-order traversal: ";
+                bst.postOrderTraversal();
+                UIUtils::waitForEnter();
+                break;
+            case 7:
+                return; // Back to main menu
             default:
                 std::cout << "Invalid choice. Please try again.\n";
         }
-    } while (choice != 5);
+    } while (choice != 7); // Adjusted loop condition
 }

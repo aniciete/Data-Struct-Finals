@@ -1,3 +1,36 @@
+# Project Overview
+
+## Course Details
+
+- **Course:** Far Eastern University Institute of Technology - CCS0015L
+- **Description:** Data Structures and Algorithms (Lab)
+- **Schedule:** TB02 WED 10:00 - 12:50
+- **Professor:** Ronel F. Ramos, MIT
+
+The course covers the fundamentals of data structures and algorithms: concepts of abstract data; types of common data structures used; description, properties, and storage allocation of data structures, including lists and trees; algorithms for creating, updating, and manipulating data structures; relation between the running of an algorithm and the choice of data structures.
+
+## Project Information
+
+- **Project Type:** Finals Project
+- **Submission Deadline:** July 18, 2025
+- **Programming Language:** C++
+
+### Project Requirements
+
+Create a comprehensive C++ program implementing various data structures and algorithms with a unified main menu interface.
+
+## Team Members & Primary Responsibilities
+
+| Member     | Primary Responsibility                                |
+| :--------- | :---------------------------------------------------- |
+| Aniciete   | Static Stack, Dynamic Stack, Main Program Architecture |
+| Buising    | Static Queue, Dynamic Queue                           |
+| Einstein   | Tree (Pre/Post/In Order Traversal)                    |
+| Manaloto   | Graph (Adjacency List)                                |
+| Manalo     | Sorting Algorithms (3 algorithms)                     |
+
+---
+
 # Data Structures & Algorithms - Finals Project
 
 A modern, modular, and user-friendly C++ CLI application demonstrating core data structures and algorithms. Features robust exception handling, performance timing, and a polished interactive experience.

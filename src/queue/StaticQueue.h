@@ -21,6 +21,9 @@ public:
     int front() const;       // Return front element without removing
     int rear() const;        // Return rear element without removing
     void display() const;    // Display all queue elements
+    int getFront() const;    // Getter for the front index
+    int getRear() const;     // Getter for the rear index
+    int getSize() const;     // Getter for the current size
 };
 
 #endif // STATIC_QUEUE_H

@@ -73,3 +73,14 @@ void DynamicQueue::display() const {
     }
     std::cout << "\n";
 }
+
+// Get the current size of the queue
+int DynamicQueue::getSize() const {
+    int size = 0;
+    Node* current = frontNode;
+    while (current != nullptr) {
+        size++;
+        current = current->next;
+    }
+    return size;
+}
