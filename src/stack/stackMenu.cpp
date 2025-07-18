@@ -1,3 +1,6 @@
+// src/stack/stackMenu.cpp
+// Provides the implementation for the stack menu interface.
+
 #include <iostream>
 #include "stackMenu.h"
 #include "StaticStack.h"
@@ -5,11 +8,16 @@
 #include "../utils/UIUtils.h"
 #include "../utils/InputUtils.h"
 
-// Forward declarations for handlers
+// Forward declarations for the menu handlers
 void handleStaticStack();
 void handleDynamicStack();
 
-// Display the main stack menu and handle user choices
+/**
+ * @brief Displays the main menu for stack operations.
+ *
+ * This function provides options to choose between a static stack and a dynamic stack,
+ * or to go back to the main menu. It handles user input and calls the appropriate handler.
+ */
 void showStackMenu() {
     int choice;
     do {
@@ -19,20 +27,26 @@ void showStackMenu() {
 
         switch (choice) {
             case 1:
-                handleStaticStack();
+                handleStaticStack(); // User chose static stack
                 break;
             case 2:
-                handleDynamicStack();
+                handleDynamicStack(); // User chose dynamic stack
                 break;
             case 3:
-                return;
+                return; // Exit to the previous menu
             default:
                 std::cout << "Invalid choice. Please try again.\n";
         }
     } while (choice != 3);
 }
 
-// Handle static stack operations menu
+/**
+ * @brief Handles operations for the static stack.
+ *
+ * This function provides a menu for all static stack operations, such as push, pop,
+ * peek, and display. It creates a StaticStack object and performs operations on it
+ * based on user input.
+ */
 void handleStaticStack() {
     StaticStack stack;
     int choice, value;
@@ -43,7 +57,7 @@ void handleStaticStack() {
         choice = InputUtils::getValidatedInput<int>("", 1, 5);
 
         switch (choice) {
-            case 1: {
+            case 1: { // Push operation
                 value = InputUtils::getValidatedInput<int>("Enter value to push onto static stack: ");
                 try {
                     stack.push(value);
@@ -53,7 +67,7 @@ void handleStaticStack() {
                 }
                 break;
             }
-            case 2: {
+            case 2: { // Pop operation
                 try {
                     value = stack.pop();
                     std::cout << UIUtils::GREEN << "Popped value: " << value << UIUtils::RESET << std::endl;
@@ -62,7 +76,7 @@ void handleStaticStack() {
                 }
                 break;
             }
-            case 3: {
+            case 3: { // Peek operation
                 try {
                     value = stack.peek();
                     std::cout << "Top value: " << value << std::endl;
@@ -71,19 +85,25 @@ void handleStaticStack() {
                 }
                 break;
             }
-            case 4:
+            case 4: // Display operation
                 stack.display();
                 break;
             case 5:
-                return;
+                return; // Go back to the stack type selection menu
         }
         if (choice != 5) {
-            UIUtils::waitForEnter(); // Added pause
+            UIUtils::waitForEnter(); // Pause to allow the user to see the output
         }
     } while (choice != 5);
 }
 
-// Handle dynamic stack operations menu
+/**
+ * @brief Handles operations for the dynamic stack.
+ *
+ * This function provides a menu for all dynamic stack operations, such as push, pop,
+ * peek, and display. It creates a DynamicStack object and performs operations on it
+ * based on user input.
+ */
 void handleDynamicStack() {
     DynamicStack stack;
     int choice, value;
@@ -94,13 +114,13 @@ void handleDynamicStack() {
         choice = InputUtils::getValidatedInput<int>("", 1, 5);
 
         switch (choice) {
-            case 1: {
+            case 1: { // Push operation
                 value = InputUtils::getValidatedInput<int>("Enter value to push onto dynamic stack: ");
                 stack.push(value);
                 std::cout << UIUtils::GREEN << "Pushed " << value << " onto the stack." << UIUtils::RESET << std::endl;
                 break;
             }
-            case 2: {
+            case 2: { // Pop operation
                 try {
                     value = stack.pop();
                     std::cout << UIUtils::GREEN << "Popped value: " << value << UIUtils::RESET << std::endl;
@@ -109,7 +129,7 @@ void handleDynamicStack() {
                 }
                 break;
             }
-            case 3: {
+            case 3: { // Peek operation
                 try {
                     value = stack.peek();
                     std::cout << "Top value: " << value << std::endl;
@@ -118,14 +138,14 @@ void handleDynamicStack() {
                 }
                 break;
             }
-            case 4:
+            case 4: // Display operation
                 stack.display();
                 break;
             case 5:
-                return;
+                return; // Go back to the stack type selection menu
         }
         if (choice != 5) {
-            UIUtils::waitForEnter(); // Added pause
+            UIUtils::waitForEnter(); // Pause to allow the user to see the output
         }
     } while (choice != 5);
 }

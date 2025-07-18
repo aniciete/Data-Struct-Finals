@@ -1,35 +1,55 @@
+// This header file defines the BinaryTree class, which represents a binary search tree.
+// It includes the necessary headers and declares the class structure,
+// including private helper functions for recursive operations and public methods for external interaction.
+
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 
 #include "TreeNode.h"
 #include <string>
 
-// Binary search tree implementation
+/**
+ * @class BinaryTree
+ * @brief A class that implements a binary search tree.
+ *
+ * This class provides methods to insert, delete, search for, and traverse nodes in a binary search tree.
+ * It uses a helper TreeNode class to represent the nodes of the tree.
+ */
 class BinaryTree {
 private:
-    TreeNode* root;  // Root node of the tree
-    
-    // Helper functions for recursive operations
-    TreeNode* insert(TreeNode* node, int data);  // Insert a new node recursively
-    TreeNode* remove(TreeNode* node, int data, bool& found);  // Remove a node recursively
-    TreeNode* findMin(TreeNode* node);  // Find the minimum value in the tree
-    void inOrder(TreeNode* node);  // Perform inorder traversal recursively
-    void getInOrder(TreeNode* node, std::string& result); // Helper for getInOrderTraversal
-    void preOrder(TreeNode* node);  // Perform preorder traversal recursively
-    void postOrder(TreeNode* node);  // Perform postorder traversal recursively
-    bool search(TreeNode* node, int key);  // Search for a value recursively
+    TreeNode* root;  // Pointer to the root node of the tree
+
+    // Private helper functions that implement the core logic using recursion.
+    // These are not intended to be called directly from outside the class.
+
+    TreeNode* insert(TreeNode* node, int data);
+    TreeNode* remove(TreeNode* node, int data, bool& found);
+    TreeNode* findMin(TreeNode* node);
+    void inOrder(TreeNode* node);
+    void getInOrder(TreeNode* node, std::string& result);
+    void preOrder(TreeNode* node);
+    void postOrder(TreeNode* node);
+    bool search(TreeNode* node, int key);
+    void destroyTree(TreeNode* node);
 
 public:
-    BinaryTree();                    // Constructor: Initialize empty tree
-    ~BinaryTree();                   // Destructor: Clean up all nodes
-    void insertNode(int data);       // Insert a value into the tree
-    void deleteNode(int data);       // Delete a node with given value
-    void inOrderTraversal();         // Display tree in inorder (left-root-right)
-    void preOrderTraversal();        // Display tree in preorder (root-left-right)
-    void postOrderTraversal();       // Display tree in postorder (left-right-root)
-    bool searchNode(int key);        // Search for a value in the tree
-    void destroyTree(TreeNode* node); // Helper function to destroy the tree
-    std::string getInOrderTraversal(); // Get in-order traversal as a string
+    // Public interface for the BinaryTree class.
+    // These methods provide a clean and simple way to interact with the tree.
+
+    BinaryTree();
+    ~BinaryTree();
+
+    void insertNode(int data);
+    void deleteNode(int data);
+    bool searchNode(int key);
+
+    // Traversal methods to display the tree's content in different orders.
+    void inOrderTraversal();
+    void preOrderTraversal();
+    void postOrderTraversal();
+
+    // Method to get the in-order traversal as a string, useful for testing or display purposes.
+    std::string getInOrderTraversal();
 };
 
 #endif // BINARY_TREE_H

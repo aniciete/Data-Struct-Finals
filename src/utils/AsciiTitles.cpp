@@ -1,14 +1,16 @@
+/**
+ * @file AsciiTitles.cpp
+ * @brief Implements functions for retrieving ASCII art titles.
+ *
+ * This file contains the definitions for the AsciiTitles namespace, including
+ * the map of ASCII art and the function to access it.
+ */
 #include "AsciiTitles.h"
 #include <unordered_map>
 
+// Namespace for functions related to ASCII art titles.
 namespace AsciiTitles {
-    /**
-     * @brief A map of menu titles to their corresponding ASCII art representations.
-     * 
-     * This map stores the ASCII art for various menu titles used in the application.
-     * The keys are the menu titles (e.g., "Stack", "Queue"), and the values are
-     * the multi-line string literals containing the ASCII art.
-     */
+    // A map storing ASCII art strings, keyed by title.
     static const std::unordered_map<std::string, std::string> asciiMap = {
         {"Stack", R"ASCII(
   
@@ -120,8 +122,11 @@ Y88b  d88P 888    888  d8888888888 888  T88b  888      888       Y88b  d88P     
      * @return A constant reference to the ASCII art string, or an empty string if not found.
      */
     const std::string& getAsciiArt(const std::string& title) {
+        // A static empty string to return for failed lookups, avoiding new allocations.
         static const std::string empty = "";
+        // Find the title in the map.
         auto it = asciiMap.find(title);
+        // Return the art if found, otherwise return the empty string.
         return (it != asciiMap.end()) ? it->second : empty;
     }
 }

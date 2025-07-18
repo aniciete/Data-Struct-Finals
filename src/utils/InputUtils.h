@@ -1,3 +1,11 @@
+/**
+ * @file InputUtils.h
+ * @brief Declares utility functions for handling and validating user input.
+ *
+ * This header provides a set of function declarations for getting validated
+ * input from the user, such as numbers within a range, characters from a
+ * specific set, and custom arrays.
+ */
 #ifndef INPUT_UTILS_H
 #define INPUT_UTILS_H
 
@@ -34,29 +42,33 @@ namespace InputUtils {
         T value;
         std::string line;
 
+        // Loop indefinitely until valid input is received.
         while (true) {
             std::cout << prompt;
+            // Read a full line of input to prevent partial reads.
             if (!std::getline(std::cin, line)) {
-                // Handle EOF or other fatal stream errors
+                // If input stream fails (e.g., EOF), print an error and exit.
                 std::cout << "End of input reached or stream error. Exiting.\n";
                 exit(0);
             }
 
-            // Ignore empty lines, which can occur in test files or with user input
+            // Ignore empty or whitespace-only lines.
             if (line.empty() || line.find_first_not_of(" \t\n\v\f\r") == std::string::npos) {
                 continue;
             }
 
             std::stringstream ss(line);
-            // Ensure the entire line is consumed by the extraction
+            // Try to extract a value of type T and ensure no trailing characters are left.
             if (ss >> value && (ss >> std::ws).eof()) {
+                // Check if the value is within the specified min/max range.
                 if (value >= min && value <= max) {
-                    return value; // Success
+                    return value; // Return the valid value.
                 } else {
+                    // Inform the user if the value is out of range.
                     std::cout << "Input out of range. Please enter a number between " << min << " and " << max << ".\n";
                 }
             } else {
-                // Handle non-numeric input or lines with extra characters
+                // Inform the user if the input is not a valid number.
                 std::cout << "Invalid input. Please enter a valid number.\n";
             }
         }

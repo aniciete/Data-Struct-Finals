@@ -1,3 +1,10 @@
+/**
+ * @file AsciiTitles.h
+ * @brief Provides functions for retrieving ASCII art titles for menus.
+ *
+ * This header declares the functions within the AsciiTitles namespace, which are
+ * used to get decorative ASCII art for different parts of the application's UI.
+ */
 #ifndef ASCII_TITLES_H
 #define ASCII_TITLES_H
 

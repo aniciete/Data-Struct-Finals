@@ -1,3 +1,11 @@
+/**
+ * @file UIUtils.h
+ * @brief Declares utility functions for creating and managing the user interface.
+ *
+ * This header provides declarations for functions that handle UI elements,
+ * including printing formatted titles, menus, and headers, as well as screen
+ * clearing and animations. It also defines ANSI color codes for styling text.
+ */
 #ifndef UI_UTILS_H
 #define UI_UTILS_H
 
