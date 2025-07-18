@@ -1,4 +1,24 @@
-# Project Overview
+# Data Structures & Algorithms - Finals Project
+
+A modern, modular, and user-friendly C++ CLI application demonstrating core data structures and algorithms. Features robust exception handling, performance timing, and a polished interactive experience.
+
+## How to Run
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/Data-Struct-Finals.git
+    cd Data-Struct-Finals
+    ```
+
+2.  **Compile the program:**
+    ```bash
+    make
+    ```
+
+3.  **Run the executable:**
+    ```bash
+    ./DsaFinalProject
+    ```
 
 ## Course Details
 
