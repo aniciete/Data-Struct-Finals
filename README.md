@@ -1,9 +1,10 @@
 
+```
  ▗▄▄▖▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖   ▗▄▄▄▖ ▗▄▄▖ ▖▖    ▗▄▖ ▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖▗▖    ▗▄▄▖
 ▐▌   ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌   ▐▌    ▖    ▐▌ ▐▌▐▛▚▖▐▌▐▌   ▐▌   ▐▌   ▐▌
-▐▌   ▐▛▀▜▌▐▛▀▜▌▐▛▀▚▖▐▌   ▐▛▀▀▘ ▝▀▚▖      ▐▛▀▜▌▐▌ ▝▜▌▐▌▝▜▌▐▛▀▀▘▐▌    ▝▀▚▖
+▐▌   ▐▛▀▜▌▐▛▀▜▌▐▛▀▚▖▐▌   ▐▛▀▀▘ ▝▀▚▖      ▐▛▀▜▌▐▌ ▝▜▌▐▌❀▜▌▐▛▀▀▘▐▌    ▝▀▚▖
 ▝▚▄▄▖▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▙▄▄▖▐▙▄▄▖▗▄▄▞▘      ▐▌ ▐▌▐▌  ▐▌▝▚▄▞▘▐▙▄▄▖▐▙▄▄▖▗▄▄▞▘
-
+```
 # Data Structures & Algorithms - Finals Project
 
 A modern, modular, and user-friendly C++ CLI application demonstrating core data structures and algorithms. Features robust exception handling, performance timing, and a polished interactive experience.
