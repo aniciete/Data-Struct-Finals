@@ -30,6 +30,7 @@
 - [Technical Specifications](#-technical-specifications)
 - [Academic Information](#-academic-information)
 - [Development Setup](#-development-setup)
+- [Credits](#credits)
 
 ## Overview
 
@@ -92,7 +93,7 @@ This project is a modern, interactive C++ CLI application that demonstrates the 
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/aniciete/Data-Struct-Finals
    cd Data-Struct-Finals
    ```
 
@@ -291,6 +292,20 @@ This is an academic project for FEU Institute of Technology. For educational pur
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
+
+## Credits
+
+<div align="center">
+
+| Member   | Primary Responsibility                                 |
+| :------- | :----------------------------------------------------- |
+| Aniciete | Static Stack, Dynamic Stack, Main Program Architecture |
+| Buising  | Static Queue, Dynamic Queue                            |
+| Einstein | Tree (Pre/Post/In Order Traversal)                     |
+| Manaloto | Graph (Adjacency List)                                 |
+| Manalo   | Sorting Algorithms (3 algorithms)                      |
+
+</div>
 
 ## License
 
