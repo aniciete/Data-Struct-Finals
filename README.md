@@ -38,48 +38,31 @@ This project is a modern, interactive C++ CLI application that demonstrates the 
 
 ### Key Highlights
 - **Multiple Data Structures**: Stack, Queue, Binary Tree, Graph
-- **Sorting Algorithms**: Bubble, Selection, Insertion, Merge, Quick Sort
-- **Performance Analysis**: Built-in timing and complexity analysis
-- **Interactive UI**: Clean CLI with ASCII art and colored output
-- **Robust Design**: Comprehensive input validation and error handling
+- **Sorting Algorithms**: Bubble, Merge, Quick Sort
+- **Performance Analysis**: Built-in timing for operations
 
 ## Features
 
-### Data Structures Implementation
+This project implements the following data structures and algorithms from scratch:
 
-| Structure | Static | Dynamic | Operations |
-|-----------|--------|---------|------------|
-| **Stack** | Yes | Yes | Push, Pop, Peek, Display, Size |
-| **Queue** | Yes | Yes | Enqueue, Dequeue, Front, Rear, Display |
-| **Binary Tree** | - | Yes | Insert, Delete, Search, Traversals |
-| **Graph** | - | Yes | Add/Remove Vertices/Edges, DFS, BFS |
+### Data Structures
 
-### Algorithm Implementations
+| Structure      | Implementation | Operations                                       |
+| :------------- | :------------- | :----------------------------------------------- |
+| **Stack**      | Static/Dynamic | `Push`, `Pop`, `Peek`, `isFull`, `isEmpty`         |
+| **Queue**      | Static/Dynamic | `Enqueue`, `Dequeue`, `Peek`, `isFull`, `isEmpty`, `Size` |
+| **Binary Tree**| Pointer-based  | `Insert`, `Delete`, `Search`, Traversal (In/Pre/Post-Order) |
+| **Graph**      | Adjacency List | `Add/Remove Vertex`, `Add/Remove Edge`, Traversal (BFS) |
 
-- **Sorting Algorithms**
-  - Bubble Sort (O(n²))
-  - Selection Sort (O(n²))
-  - Insertion Sort (O(n²))
-  - Merge Sort (O(n log n))
-  - Quick Sort (O(n log n) average)
+### Algorithms
 
-- **Tree Algorithms**
-  - Inorder, Preorder, Postorder Traversal
-  - Search and Insert Operations
-  - Tree Height Calculation
-
-- **Graph Algorithms**
-  - Depth-First Search (DFS)
-  - Breadth-First Search (BFS)
-  - Shortest Path Algorithms
-
-### User Experience Features
-
-- **ASCII Art Interface** - Beautiful command-line presentation
-- **Performance Timing** - Real-time operation timing
-- **Input Validation** - Comprehensive error checking
-- **Visual Feedback** - Clear operation results and status
-- **Interactive Menus** - Intuitive navigation system
+| Category | Algorithm          | Description                                    |
+| :------- | :----------------- | :--------------------------------------------- |
+| Sorting  | **Bubble Sort**    | Simple `O(n²)` comparison-based algorithm.     |
+|          | **Merge Sort**     | Efficient `O(n log n)` divide-and-conquer sort.|
+|          | **Quick Sort**     | Fast `O(n log n)` average case sort.           |
+| Traversal| **BFS**            | Breadth-First Search for graph traversal.      |
+|          | **Tree Traversals**| In-Order, Pre-Order, and Post-Order traversals.|
 
 ## Quick Start
 
@@ -157,55 +140,32 @@ Data-Struct-Finals/
 
 ## Usage Guide
 
-### Navigation
+After running the application, you will be greeted with the main menu. From here, you can navigate to different modules to interact with various data structures and algorithms.
 
-The application uses a menu-driven interface:
+### Example: Sorting Performance Analysis
 
-- **Number Selection**: Enter the number corresponding to your choice
-- **Input Validation**: Invalid inputs are caught and handled gracefully
-- **Return Navigation**: Most menus allow returning to the previous level
-- **Exit Options**: Safe exit available at any level
+1.  **Navigate**: From the main menu, select `Sort`.
+2.  **Choose Algorithm**: Select an algorithm, for example, `Quick Sort`.
+3.  **Select Data**: Choose the default array or provide a custom one.
+4.  **View Results**: The program will display the original and sorted arrays, along with the time taken to perform the sort.
 
-### Performance Analysis
-
-Each operation includes timing information:
+**Sample Output:**
 
 ```
-Operation completed in: 0.0023ms
-Complexity: O(log n)
-Elements processed: 1000
+Original array: [64, 34, 25, 12, 22, 11, 90]
+Sorted array:   [11, 12, 22, 25, 34, 64, 90]
+Time taken: 42 microseconds
 ```
 
-### Error Handling
-
-The application provides clear feedback for:
-- Invalid input types
-- Out-of-range values
-- Empty data structure operations
-- Memory allocation failures
+> **Note**: The execution time is measured in microseconds and may vary depending on system load and hardware.
 
 ## Technical Specifications
 
-### Build Configuration
-
-- **Standard**: C++14
-- **Compiler Flags**: `-std=c++14 -Isrc -g -Wall`
-- **Include Path**: `src/` directory for modular includes
-- **Debug Info**: Enabled with `-g` flag
-- **Warnings**: All warnings enabled with `-Wall`
-
-### Architecture
-
-- **Design Pattern**: Modular architecture with clear separation
-- **Memory Management**: RAII principles with proper cleanup
-- **Error Handling**: Exception-safe operations throughout
-- **Performance**: Optimized algorithms with timing analysis
-
-### Dependencies
-
-- **Standard Library**: `<iostream>`, `<vector>`, `<string>`, `<chrono>`
-- **Custom Headers**: Modular components in `src/` directory
-- **No External Libraries**: Pure C++ implementation
+- **Language**: C++14
+- **Compiler**: g++ (MinGW on Windows, Clang on macOS)
+- **Build System**: GNU Make
+- **Core Features**:
+  - Templated classes for generic data types (where applicable)
 
 ## Academic Information
 
@@ -219,23 +179,6 @@ The application provides clear feedback for:
 | **Instructor** | Ronel F. Ramos, MIT |
 | **Submission** | July 18, 2025 |
 | **Project Type** | Finals Project |
-
-### Learning Objectives
-
-- **Data Structure Implementation**: Hands-on coding of fundamental structures
-- **Algorithm Analysis**: Understanding time and space complexity
-- **Modular Programming**: Clean code organization and design patterns
-- **Performance Optimization**: Efficient algorithm implementation
-- **User Interface Design**: Creating intuitive command-line interfaces
-- **Memory Management**: Proper allocation and deallocation practices
-
-### Assessment Criteria
-
-1. **Code Quality** (25%): Clean, readable, and well-documented code
-2. **Functionality** (25%): Correct implementation of all requirements
-3. **User Experience** (20%): Intuitive interface and error handling
-4. **Performance** (15%): Efficient algorithms and optimization
-5. **Documentation** (15%): Comprehensive README and code comments
 
 ## Development Setup
 
